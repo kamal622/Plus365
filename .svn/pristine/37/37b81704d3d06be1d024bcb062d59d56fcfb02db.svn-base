@@ -1,0 +1,155 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "Register";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<div class="body-container" ng-controller="RegisterController" id="table">
+    <div class="box box-primary">
+        <div class="box-body">
+            <form kendo-validator="validator" class="form-register" autocomplete="off">
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="FirstName">First Name</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="FirstName" ng-model="RegisterObj.FirstName" style="width:100%;" placeholder="First Name" class="k-textbox" required validationMessage="Enter First Name" />
+                        <span class="k-invalid-msg" data-for="FirstName"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="PersonalEmail">Email</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="PersonalEmail" ng-model="RegisterObj.PersonalEmail" style="width:100%;" placeholder="Email" class="k-textbox" required validationMessage="Enter Email" />
+                        <span class="k-invalid-msg" data-for="PersonalEmail"></span>
+                    </div>
+                </div>
+
+                @*<div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="UserName">User Name</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="UserName" ng-model="RegisterObj.UserName" placeholder="User Name" style="width:100%;" class="k-textbox" required validationMessage="Enter User Name" />
+                        <span class="k-invalid-msg" data-for="UserName"></span>
+                    </div>
+                </div>*@
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="Password">Password</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="Password" type="password" autocomplete="new-password"  class="k-textbox" ng-model="RegisterObj.Password" style="width:100%;" required validationMessage="Enter Password" placeholder="Password" />
+                        <span class="k-invalid-msg" data-for="Password"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="Password">Confirm Password </label>
+                    </div>
+                    <div class="col-md-7">
+                        <input name="ConfirmPassword" type="password" autocomplete="new-password"  class="k-textbox" placeholder="Confirm Password" ng-model="RegisterObj.confirmPassword" ng-pattern="RegisterObj.Password" style="width:100%;" required />
+                        <span ng-show="RegisterObj.confirmPassword.trim() && RegisterObj.Password != RegisterObj.confirmPassword">Your passwords must match.</span>
+                        <span class="k-invalid-msg" data-for="ConfirmPassword"></span>
+                       
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="Country">Country</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select name="CountryId" kendo-drop-down-list k-ng-model="RegisterObj.CountryId"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'Id'"
+                                required validationMessage="Select Country"
+                                k-value-primitive="true"
+                                k-option-label="'Select Country'"
+                                style="width:100%;"
+                                k-data-source="Countrydata"></select>
+                        <span class="k-invalid-msg" data-for="CountryId"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label for="LanguageId">Language</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select name="LanguageId" kendo-drop-down-list k-ng-model="RegisterObj.LanguageId"
+                                k-data-text-field="'Name'"
+                                k-value-primitive="true"
+                                k-data-value-field="'Id'"
+                                style="width:100%;"
+                                required validationMessage="Select Language"
+                                k-option-label="'Select Language'"
+                                k-data-source="Languagedata"></select>
+                        <span class="k-invalid-msg" data-for="LanguageId"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>How Did You hear About us? </label>
+                    </div>
+
+                    <div class="col-md-7">
+                        <select kendo-drop-down-list ng-model="CodeType" style="width:100%;" id="registerdrpdwn" k-on-change="OnChangeCodetype(kendoEvent)">
+                            <option value="Google">Google</option>
+                            <option value="referral">Referral/Advertisement</option>
+                            <option value="promo">Promotion Code</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div id="referral" ng-if="CodeType == 'referral'">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label for="ReferralCode">Referral Code</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input name="ReferralCode" ng-model="RegisterObj.ReferralCode" style="width:100%;" placeholder="Referral Code" class="k-textbox" required/>
+                            <span class="k-invalid-msg" data-for="ReferralCode"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="promo" ng-if="CodeType == 'promo'">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label for="PromotionCode">Promotion Code</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input name="PromotionCode" ng-model="RegisterObj.PromotionCode" style="width:100%;" placeholder="Promotion Code" class="k-textbox" required/>
+                            <span class="k-invalid-msg" data-for="PromotionCode"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <kendo-button type="submit" class="k-primary" ng-click="RegisterClientData($event)">Register</kendo-button>
+                        @*<kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>*@
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/RegisterController.js"></script>
+}

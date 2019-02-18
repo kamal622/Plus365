@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+@*CKEditor Sample*@
+
+<textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+
+<input type="button" value="Get CKEditor Value" onclick="getCKEditorValue();"/>
+
+@section scripts {
+    <script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="~/Scripts/ckeditor/config.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        var ckEditor = CKEDITOR.replace('editor1');
+        CKEDITOR.config.uiColor = '#e1f3f4';
+
+        // Set Data...
+        ckEditor.setData('Sample test data...');
+
+        // Get Data...
+        var getCKEditorValue = function (e) {
+            var a = ckEditor.getData();
+            alert(a);
+        }
+    </script>
+}
+
+@*CKEditor Sample*@

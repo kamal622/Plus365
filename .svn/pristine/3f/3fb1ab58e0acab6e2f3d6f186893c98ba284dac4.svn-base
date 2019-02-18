@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Email Template";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="row" ng-controller="EmailTemplateController" id="Emailtemplate">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <kendo-button class="k-primary" ng-click="onAddEmailtemplateClick()">Add Email</kendo-button>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Languages" style="width: 110px;font-weight:bold;">Languages</label>
+                    <select name="languageId" kendo-drop-down-list k-ng-model="AdvisorObj.languageId"
+                            k-data-text-field="'value'"
+                            k-value-primitive="true"
+                            k-data-value-field="'languageId'"
+                            required validationMessage="*"
+                            k-option-label="'Select Language'"
+                            k-data-source="Languagedata"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="emailtemplate" class="ui celled table" cellspacing="0" width="100%"></table>
+            </div>
+        </div>
+    </div>
+    <div kendo-window="winEmail" k-title="'Add Email'" k-width="345" k-height="270" k-visible="false" k-modal="true">
+        <div class="col-md-11">
+            <form kendo-validator="validator" class="form-horizontal">
+                <div class="row form-group">
+                    <label for="TemplateType" style="width: 120px;">Template Type</label>
+                    <select name="TemplateType" kendo-drop-down-list k-ng-model="EmailObj.TemplateType"
+                            k-data-text-field="'Type'"
+                            k-value-primitive="true"
+                            k-data-value-field="'Id'"
+                            required validationMessage="*"
+                            k-option-label="'Select Template Type'"
+                            k-data-source="TemplateType"></select>
+                    <span class="k-invalid-msg" data-for="TemplateType"></span>
+                </div>
+                <div class="row form-group">
+                    <label for="Emailtext" style="width: 120px;">Email Text</label>
+                    <textarea name="Emailtext" ng-model="EmailObj.Emailtext" placeholder="Enter Email" class="k-textbox" required validationMessage="*" style="height: 112px;width: 174px;"></textarea>
+                </div>
+                <div class="row form-group">
+                    <label for="EmailSubject" style="width: 120px;">Email Subject</label>
+                    <input name="EmailSubject" class="k-textbox" ng-model="EmailObj.EmailSubject" required validationMessage="*" placeholder="Enter Email Subject" />
+                </div>
+            </form>
+        </div>
+        <kendo-button class="k-primary" ng-click="SaveTemplateData($event)">Save</kendo-button>
+        <kendo-button ng-click="onCancel()">Cancel</kendo-button>
+    </div>
+
+</div>
+
+
+
+
+<style>
+    .glyphicon {
+        font-size: x-small;
+    }
+    textarea.k-invalid {
+        border: 1px solid red !important;
+    }
+
+    input.k-invalid {
+        border: 1px solid red !important;
+    }
+
+    .k-dropdown.k-invalid {
+        border: 1px solid red !important;
+    }
+    .k-widget > span.k-invalid,
+    textarea.k-invalid {
+        border: 1px solid red !important;
+    }
+    /*hide validation message*/
+    .k-tooltip-validation {
+        /*visibility: hidden;*/
+        /*or*/
+        display: none !important;
+    }
+</style>
+
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/EmailTemplateController.js"></script>
+}

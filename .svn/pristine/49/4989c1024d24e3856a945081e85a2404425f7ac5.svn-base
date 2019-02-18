@@ -1,0 +1,12 @@
+﻿SiteApp.controller("IniteController", function ($scope, $http) {
+
+	$scope.test = function (event)
+	{
+		alert('image button clicked');
+	};
+	
+
+});
+
+
+

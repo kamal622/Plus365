@@ -1,0 +1,129 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.EmailTemplate
+{
+    public class EmailTemplateService
+    {
+        private readonly IRepository<Data.Models.EmailTemplate> _emailTemplateRepository;
+        private readonly IRepository<Data.Models.EmailTemplateType> _emailTemplateTypeRepository;
+        public EmailTemplateService(IRepository<Data.Models.EmailTemplate> emailTemplateRepository, IRepository<Data.Models.EmailTemplateType> emailTemplateTypeRepository)
+        {
+            this._emailTemplateRepository = emailTemplateRepository;
+            this._emailTemplateTypeRepository = emailTemplateTypeRepository;
+        }
+
+        public List<EmailTemplateModel> GetAll()
+        {
+            var data = from a in this._emailTemplateRepository.Table
+                       select new EmailTemplateModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           Subject = a.Subject,
+                           Body = a.Body,
+                           TemplateTypeId = a.TemplateTypeId,
+                           TemplateTypeName=a.EmailTemplateType.Type,
+                           LanguageId = a.LanguageId,
+                           IsActive = a.IsActive,
+                           CreatedDate = a.CreatedDate,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy
+                       };
+            return data.ToList();
+        }
+
+        public List<EmailTemplateTypeModel> GetAllEmailTemplateType()
+        {
+            var data = from a in this._emailTemplateTypeRepository.Table
+                       select new EmailTemplateTypeModel
+                       {
+                           Id = a.Id,
+                           Type = a.Type,
+                           IsActive = a.IsActive
+                       };
+            return data.ToList();
+        }
+
+        public List<EmailTemplateModel> GetAllEmailTemplatesByLanguage(long languageId)
+        {
+            var data = from a in this._emailTemplateRepository.Table
+                       where a.LanguageId == languageId
+                       select new EmailTemplateModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           Subject = a.Subject,
+                           Body = a.Body,
+                           TemplateTypeId = a.TemplateTypeId,
+                           TemplateTypeName = a.EmailTemplateType.Type,
+                           LanguageId = a.LanguageId,
+                           IsActive = a.IsActive,
+                           CreatedDate = a.CreatedDate,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy
+                       };
+            return data.ToList();
+        }
+
+        public EmailTemplateModel GeEmailTemplateByID(double id)
+        {
+            var data = from a in this._emailTemplateRepository.Table
+                       where a.Id == id
+                       select new EmailTemplateModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           Subject = a.Subject,
+                           Body = a.Body,
+                           TemplateTypeId = a.TemplateTypeId,
+                           TemplateTypeName = a.EmailTemplateType.Type,
+                           LanguageId = a.LanguageId,
+                           IsActive = a.IsActive,
+                           CreatedDate = a.CreatedDate,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy
+                       };
+
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.EmailTemplate AddEmailTemplate(Data.Models.EmailTemplate emailTemplate)
+        {
+            
+            this._emailTemplateRepository.Insert(emailTemplate);
+            return emailTemplate;
+        }
+
+        public void UpdateEmailTemplate(Data.Models.EmailTemplate emailTemplate)
+        {
+
+            var existingEmailTemplate = _emailTemplateRepository.Table.FirstOrDefault(f => f.Id == emailTemplate.Id);
+            if (existingEmailTemplate != null)
+            {
+                //Update
+                existingEmailTemplate.Name = emailTemplate.Name;
+                existingEmailTemplate.Subject = emailTemplate.Subject;
+                existingEmailTemplate.Body = emailTemplate.Body;
+
+                existingEmailTemplate.TemplateTypeId = emailTemplate.TemplateTypeId;
+                existingEmailTemplate.LanguageId = emailTemplate.LanguageId;
+                existingEmailTemplate.IsActive = emailTemplate.IsActive;
+                
+                existingEmailTemplate.ModifiedBy = emailTemplate.ModifiedBy;
+                existingEmailTemplate.ModifiedDate = DateTime.UtcNow;
+               
+                _emailTemplateRepository.Update(existingEmailTemplate);
+            }
+
+        }
+    }
+}

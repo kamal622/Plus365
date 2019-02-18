@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+<style>
+
+	.logo {
+		margin-top: 120px;
+		color: #ff9c02;
+		font-size: 50px;
+		font-weight: bold;
+		font-family: 'Acme', sans-serif;
+		line-height: 62px;
+	}
+</style>
+
+<div class="body-container">
+
+    <div class="row form-group">
+        <div class="col-md-12 text-center logo">
+           nokNOK
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+			<h3>
+				@Html.ActionLink("WHY", "Index", "FAQ")
+			</h3>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+            <h3>
+                @Html.ActionLink("QUESTIONS", "Info", "Home")
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>
+                @Html.ActionLink("MY ADMIN", "HtmlPages", "Admin")
+            </h3>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login to Your Account</h4>
+                </div>
+                <div id="divLogin" class="loginmodal-container">
+                    @Html.Partial("_Login")
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Register</h4>
+                </div>
+                <div id="divRegister" class="loginmodal-container">
+                    @Html.Partial("_Register")
+
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

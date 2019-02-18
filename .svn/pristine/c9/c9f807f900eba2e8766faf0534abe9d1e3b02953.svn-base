@@ -1,0 +1,64 @@
+﻿SiteApp.controller("LessonsController", function ($scope, $http, $location, $anchorScroll) {
+    $scope.selectedLesson = "";
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('#myBtn').fadeIn();
+        } else {
+            $('#myBtn').fadeOut();
+        }
+    });
+    $scope.backToTop = function () {
+        $("html, body").animate({ scrollTop: 0 }, 1000);
+        return false;
+    };
+
+    $("#sidebar")
+        .kendoResponsivePanel({
+            breakpoint: 768,
+            orientation: "left"
+        });
+
+
+    $scope.lessonData = new kendo.data.DataSource({
+        data: [],
+        pageSize: 5,
+        previousNext: true
+    });
+
+   
+
+    $scope.bookData = new kendo.data.HierarchicalDataSource({
+        transport: {
+            read: {
+                type: "GET",
+                url: "/Subscription/GetAllEbooks",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+            }
+        },
+        error: function (e) {
+            debugger;
+            console.log(e.status); // displays "error"
+        }
+
+    });
+
+
+    $scope.orientation = "horizontal";
+
+   
+    $('#sidebar li:nth-child(2) span').addClass('k-state-selected');
+    $scope.onChangeLesson = function (dataItem) {
+      
+        $scope.selectedLesson = dataItem;
+        if ($scope.selectedLesson.Title != "Book 1")
+        $('#sidebar li:nth-child(1) span').removeClass('k-state-selected');
+        $("#sidebar").kendoResponsivePanel("close");
+
+    };
+	$scope.onDataBound = function (e) {
+		$('#sidebar li:nth-child(1) span').addClass('k-state-selected');
+        $scope.selectedLesson = $scope.bookData.data()[0];
+	};
+});
+

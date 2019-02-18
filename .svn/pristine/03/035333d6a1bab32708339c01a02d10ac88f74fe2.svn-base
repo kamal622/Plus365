@@ -1,0 +1,203 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Data.Models;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.Clients
+{
+    public class ClientService
+    {
+        private readonly IRepository<Data.Models.UserProfile> _userProfileRepository;
+        private readonly IRepository<Data.Models.Role> _roleRepository;
+        private readonly IRepository<Data.Models.Language> _languageRepository;
+        private readonly IRepository<Data.Models.Country> _countryRepository;
+        private readonly IRepository<Data.Models.Code> _codeRepository;
+        private readonly IRepository<Data.Models.UserSubscriptionStatu> _userSubscriptionStatusRepository;
+
+
+        private readonly IRepository<Data.Models.User> _userRepository;
+
+        public ClientService(IRepository<Data.Models.UserProfile> userProfileRepository, IRepository<Data.Models.Role> roleRepository, IRepository<Data.Models.User> userRepository,
+            IRepository<Data.Models.Language> languageRepository, IRepository<Data.Models.Country> countryRepository, IRepository<Data.Models.Code> codeRepository,
+            IRepository<Data.Models.UserSubscriptionStatu> userSubscriptionStatusRepository)
+        {
+            this._userProfileRepository = userProfileRepository;
+            this._roleRepository = roleRepository;
+            this._userRepository = userRepository;
+            this._languageRepository = languageRepository;
+            this._countryRepository = countryRepository;
+            this._codeRepository = codeRepository;
+            this._userSubscriptionStatusRepository = userSubscriptionStatusRepository;
+        }
+
+
+        public List<ClientsModel> GetAll()
+        {
+
+            var data = from user in this._userRepository.Table
+                       join lang in this._languageRepository.Table on user.UserProfile.LanguageId equals lang.Id
+                       join cntry in this._countryRepository.Table on user.UserProfile.CountryId equals cntry.Id
+                       where user.Roles.Any(r => r.Name == "Prospect" || r.Name== "Client")
+                       select new ClientsModel
+                       {
+                           Id = user.Id,
+                           FirstName = user.UserProfile.FirstName,
+                           LastName = user.UserProfile.LastName,
+                           UserName = user.UserName,
+                           PersonalEmail = user.UserProfile.PersonalEmail,
+                           MobileNo = user.UserProfile.MobileNo,
+                           DateOfBirth = user.UserProfile.DateOfBirth,
+                           UserCode = user.UserProfile.UserCode,
+                           CountryId = user.UserProfile.CountryId,
+                           CountryName=cntry.Name,
+                           LanguageId = user.UserProfile.LanguageId,
+                           LanguageName=lang.Name,
+                           ModifiedDate = user.UserProfile.ModifiedDate,
+                           CreatedBy = user.UserProfile.CreatedBy,
+                           ModifiedBy = user.UserProfile.ModifiedBy,
+                           CreatedDate = user.UserProfile.CreatedDate
+                       };
+           
+            return data.ToList();
+        }
+
+        public ClientsModel GetClientByID(double id)
+        {
+            var data = from a in this._userProfileRepository.Table
+                       where a.Id == id
+                       select new ClientsModel
+                       {
+                           Id = a.Id,
+                           FirstName = a.FirstName,
+                           LastName = a.LastName,
+                           PersonalEmail = a.PersonalEmail,
+                           MobileNo = a.MobileNo,
+                           DateOfBirth = a.DateOfBirth,
+                           UserCode = a.UserCode,
+                           CountryId = a.CountryId,
+                           LanguageId = a.LanguageId,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy,
+                           CreatedDate = a.CreatedDate,
+                       };
+
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.Role AddClient(Data.Models.Role client)
+        {
+           
+            this._roleRepository.Insert(client);
+            return client;
+        }
+
+        public bool ValidateReferralCode(string code)
+        {
+            return _userProfileRepository.Table.Where(w => w.ReferralCode == code).Count()>0;
+        }
+
+        public bool ValidatePromoCode(string code)
+        {
+            return _codeRepository.Table.Where(w => w.CodeValue == code).Count() > 0;
+        }
+
+        public void UpdateClient(ClientsModel client)
+        {
+
+            var existingClient = _userProfileRepository.Table.FirstOrDefault(f => f.Id == client.Id);
+            if (existingClient != null)
+            {
+                //Update
+                existingClient.FirstName = client.FirstName;
+                existingClient.LastName = client.LastName;
+                existingClient.PersonalEmail = client.PersonalEmail;
+
+                existingClient.MobileNo = client.MobileNo;
+                existingClient.DateOfBirth = client.DateOfBirth;
+
+                existingClient.UserCode = client.UserCode;
+                existingClient.CountryId = client.CountryId;
+                existingClient.LanguageId = client.LanguageId;
+                if (client.ReferralCode!="" && ValidateReferralCode(client.ReferralCode))
+                {
+                    existingClient.ParentId = _userRepository.Table.Where(w => w.UserProfile.ReferralCode == client.ReferralCode).FirstOrDefault().Id;
+                    existingClient.Points = existingClient.Points + _codeRepository.Table.Where(w => w.CodeValue == client.ReferralCode).Select(s => s.Points).FirstOrDefault();
+                }
+
+                if (client.PromotionCode != "" && ValidatePromoCode(client.PromotionCode))
+                {
+                    existingClient.PromotionCode = client.PromotionCode;
+                    existingClient.Points = existingClient.Points + _codeRepository.Table.Where(w => w.CodeValue == client.PromotionCode).Select(s => s.Points).FirstOrDefault();
+                }
+
+
+
+
+                //Setup referral code for user
+                var refCode =  _userProfileRepository.Table.Select(s => s.ReferralCode).Max() ;
+                existingClient.ReferralCode = (Convert.ToInt64(refCode)+1).ToString() ;
+
+
+                existingClient.ModifiedBy = client.ModifiedBy;
+                existingClient.ModifiedDate = DateTime.UtcNow;
+                if (existingClient.CreatedBy == null)
+                {
+                    existingClient.CreatedBy = client.ModifiedBy;
+                    existingClient.CreatedDate = DateTime.UtcNow;
+
+                }
+                _userProfileRepository.Update(existingClient);
+
+            }
+
+        }
+
+        public List<UserSubscriptionStatusModel> GetSubscriptionStatus(int userId)
+        {
+            var data = from s in this._userSubscriptionStatusRepository.Table
+                       where s.UserId == userId
+                       select new UserSubscriptionStatusModel
+                       {
+                           Id = s.Id,
+                           UserId = s.UserId,
+                           EbookId = s.EbookId,
+                           EbookTitle = s.Ebook.Title,
+                           Status = s.Status,
+                           IsActive = s.IsActive,
+                           CreatedBy = s.CreatedBy,
+                           CreatedDate = s.CreatedDate,
+                           ModifiedBy = s.ModifiedBy,
+                           ModifiedDate = s.ModifiedDate,
+                           Discount = s.Discount
+                       };
+            return data.ToList();
+
+        }
+
+        public void UpdateClientSubscriptionStatus(List<UserSubscriptionStatu> subscriptions)
+        {
+            UserSubscriptionStatu existingSubscription =null;
+            foreach (UserSubscriptionStatu subscription in subscriptions)
+            {
+                existingSubscription = _userSubscriptionStatusRepository.Table.FirstOrDefault(f => f.Id == subscription.Id);
+                if (existingSubscription != null)
+                {
+                    existingSubscription.ModifiedBy = subscription.ModifiedBy;
+                    existingSubscription.ModifiedDate = DateTime.UtcNow;
+                    existingSubscription.Status = subscription.Status;
+                    existingSubscription.IsActive = subscription.IsActive;
+                    existingSubscription.Discount = subscription.Discount;
+                    _userSubscriptionStatusRepository.Update(existingSubscription);
+                }
+
+            }
+          
+        }
+
+    }
+}

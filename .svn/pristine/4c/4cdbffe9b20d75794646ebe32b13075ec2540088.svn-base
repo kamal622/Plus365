@@ -1,0 +1,74 @@
+﻿@using _365Plus.Web.Models
+@model LoginViewModel
+
+@*<div class="form">*@
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+
+@using (Ajax.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divLogin",
+    InsertionMode = InsertionMode.Replace,
+    OnBegin = "OnLoginBegin",
+    OnSuccess = "OnLoginSuccess",
+    OnFailure = "OnLoginFailure"
+}, new { @class = "form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="login-form">
+        @*<div class="alert alert-danger display-hide" id="dvErrorMessage" runat="server">
+                <button type="button" class="close" data-close="alert"></button>
+                <span id="spnErrorMessage" style="font: 200"></span>
+            </div>*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<%--    <asp:DropDownList ID="ddlRoles" runat="server" CssClass="form-control">
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="rfvddlRegion" runat="server" ForeColor="Red" SetFocusOnError="true" meta:reourcekey="RegionError" ErrorMessage="Please select role" ControlToValidate="ddlRoles" InitialValue="0" Display="Dynamic" ValidationGroup="Login"></asp:RequiredFieldValidator>--%>*@
+
+        @*<asp:TextBox ID="txtUsername" CssClass="txtUsername" name="user" runat="server" placeholder="Username" autocomplete="off" />*@
+        @Html.TextBoxFor(m => m.Email, new { @class = "txtUsername", @placeholder = "Username", @autocomplete = "off",@id="txtEmail" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+        @*<asp:TextBox ID="txtPassword" name="pass" CssClass="txtPassword" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />*@
+        @Html.PasswordFor(m => m.Password, new { @class = "txtPassword", @placeholder = "Password", @autocomplete = "off",@id="txtPassword" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        @*<asp:Button ID="btnLogin" name="login" Text="Login" runat="server" ValidationGroup="Login" CssClass="login loginmodal-submit" OnClick="btnLogin_Click" />*@
+        <input type="submit" value="Login" class="login loginmodal-submit" />
+
+        <div class="login-help"><a class="lnkForget" href="#">Forgot Password</a></div>
+    </div>
+}
+
+@*</div>*@
+
+<script type="text/javascript">
+    function OnLoginBegin(e) {
+        $("#login-modal").block({
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff',
+                baseZ: 9999
+            }
+        });
+    }
+
+    function OnLoginSuccess(e) {
+        debugger;
+        $.unblockUI;
+        if (typeof (e.SignInStatus) != 'undefined' && e.SignInStatus == 0)
+            window.location = e.ReturnUrl;
+    }
+
+    function OnLoginFailure(e) {
+    }
+</script>
+

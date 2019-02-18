@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Lessons";
+}
+
+<style>
+    #Advisor{
+        height:90%;
+
+    }
+    #sidebar {
+        /* panel background should be set to match design */
+        background: #e2e4e7;
+        height: 100%;
+        border-right: 1px solid #e2e4e7
+        /*padding :30px 15px;*/
+    }
+
+    article {
+        /* clear the floating sidebar */
+        overflow: hidden;
+        padding: 15px ;
+    }
+
+
+    header {
+        padding: 5px 0px 5px 15px;
+        color: #fff;
+        background-color: grey;
+        /*background-image: linear-gradient(to top, #014F80 0%, #092646 100%);*/
+    }
+
+    h1 {
+        display: inline;
+    }
+
+    p {
+        padding: 2em;
+    }
+
+   #Advisor nav a {
+        /*border: 1px solid #ccc;*/
+        background-color: transparent;
+        color: #2d3e50;
+        display: block;
+        text-decoration: none ;
+        padding: .5em;
+    }
+</style>
+
+<div class="row" ng-controller="LessonsController" id="Advisor">
+    <header>
+        <!-- toggle icon, .k-rpanel-toggle hides it on page width > breakpoint -->
+        <button class="k-rpanel-toggle"><i class="k-icon k-i-menu"></i></button>
+
+        <h4>Lessons --  {{selectedLesson.text}}</h4>
+    </header>
+
+    <!-- responsive panel -->
+    <nav id="sidebar">
+        @*<a href="#">Lesson1</a>
+        <a href="#">Lesson2</a>*@
+        <div kendo-panel-bar="tree"
+             k-data-source="treeData"
+             k-on-change="selectedLesson = dataItem" >
+            <span k-template>
+                {{dataItem.text}} 
+            </span>
+        </div>
+    </nav>
+
+    <article id="content">
+        <div ng-show="selectedLesson.text =='Lesson 1'">
+            Lesson1.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 2'">
+            Lesson2.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 3'">
+            Lesson3.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 4'">
+            Lesson4.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 5'">
+            Lesson5.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 6'">
+            Lesson6.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 7'">
+            Lesson7.......................
+        </div>
+        <div ng-show="selectedLesson.text =='Lesson 8'">
+            Lesson8.......................
+        </div>
+    </article>
+
+</div>
+@section scripts {
+    <script type="text/javascript" src="~/js/LessonsController.js"></script>
+}
+
+

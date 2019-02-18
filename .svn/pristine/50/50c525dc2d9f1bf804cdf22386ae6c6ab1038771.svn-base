@@ -1,0 +1,59 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.HtmlPages
+{
+    public class HtmlPageService
+    {
+        private readonly IRepository<Data.Models.HTMLPage> _htmlPageRepository;
+        private readonly IRepository<Data.Models.HTMLPageContent> _htmlPageContentRepository;
+        public HtmlPageService(IRepository<Data.Models.HTMLPage> htmlPageRepository, IRepository<Data.Models.HTMLPageContent> htmlPageContentRepository)
+        {
+            this._htmlPageRepository = htmlPageRepository;
+            this._htmlPageContentRepository = htmlPageContentRepository;
+        }
+
+        public List<HtmlPageContentModel> GetAll(long languageId)
+        {
+            var data = from a in this._htmlPageContentRepository.Table
+					   where a.LanguageId==languageId
+                       select new HtmlPageContentModel
+                       {
+                           Id = a.Id,
+						   HTMLPageId= a.HTMLPageId,
+						   Name = a.HTMLPage.Name,
+                           Path = a.HTMLPage.Path,
+						   HTMLContent=a.HTMLContent,
+						   LanguageId=a.LanguageId,
+						   IsActive=a.IsActive
+                       };
+
+            return data.ToList();
+        }
+
+	
+		public HtmlPageContentModel GetHtmlPageById(double id)
+        {
+            var data = from a in this._htmlPageContentRepository.Table
+                       where a.Id == id
+					   select new HtmlPageContentModel
+					   {
+						   Id = a.Id,
+						   HTMLPageId = a.HTMLPageId,
+						   Name = a.HTMLPage.Name,
+						   Path = a.HTMLPage.Path,
+						   HTMLContent = a.HTMLContent,
+						   LanguageId = a.LanguageId,
+						   IsActive = a.IsActive
+					   };
+			return data.FirstOrDefault();
+        }
+
+       
+    }
+}

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Clients";
+}
+
+<div class="body-container" ng-controller="ClientsController" id="Clients">
+    <div class="table-div">
+        <table id="clientsTable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <table id="clientsTable" class="ui celled table" cellspacing="0" width="100%"></table>
+        </div>
+    </div>*@
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/ClientsController.js"></script>
+}

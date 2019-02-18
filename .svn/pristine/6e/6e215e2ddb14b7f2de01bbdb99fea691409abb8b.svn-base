@@ -1,0 +1,169 @@
+﻿SiteApp.controller("EmailTemplateController", function ($scope, $http) {
+    //alert('hi ');
+   
+    $scope.Type = 0;
+    $scope.EmailObj = { Id: 0, TemplateTypeId: 0, Name: "aaa", Subject: "", Body: "", LanguageId: 0, IsActive: true };
+    //$scope.EmailObj.LanguageId = 0;
+    function refreshEmailTemplatesGridData() {
+        //
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetAllEmailTemplates",
+            data: { languageId: $scope.EmailObj.LanguageId  },
+            success: function (data) {
+                //
+                emailtemplateGrid.clear();
+                emailtemplateGrid.rows.add(data).draw();
+            },
+            error: function (jqXHR, exception) {
+
+                //
+            }
+        });
+    }
+
+    $scope.OnChangeLanguage = function (e) {
+        //
+        refreshEmailTemplatesGridData();
+    }
+
+    $scope.TemplateType = new kendo.data.DataSource({
+       
+        transport: {
+            read: {
+                type: "GET",
+                url: "/Admin/GetAllEmailTemplateType",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+
+            }
+        },
+        error: function (e) {
+            console.log(e.status); // displays "error"
+        }
+
+    });
+
+    $scope.Languagedata = new kendo.data.DataSource({
+
+        transport: {
+            read: {
+                type: "GET",
+                url: "/Admin/GetAllLanguages",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+
+            }
+        },
+        error: function (e) {
+            console.log(e.status); // displays "error"
+        }
+
+    });
+
+    var emailtemplateGrid = $('#emailtemplateTable').DataTable({
+        "data": [],
+        "paging": false,
+        "bSort": false,
+        "bInfo": false, // hide Showing 1 of N entries
+        "columnDefs": [
+            {
+                "targets": 3,
+                "data": null,
+                "width": "50px",
+                "defaultContent":
+                    "<button  class='btn btn-sm edit'><i class='glyphicon glyphicon-edit'></i></button>"
+            },
+            {
+                "targets": 4,
+                "data": null,
+                "width": "50px",
+                "defaultContent":
+                    "<button  class='btn btn-sm delete'><i class='glyphicon glyphicon-trash'></i></button>"
+            }
+        ],
+        "columns":
+            [
+                { title: "Template Type", "data": "TemplateTypeName", "width": "248px" },
+                { title: "Text", "data": "Name", "width": "248px" },
+                { title: "Subject", "data": "Subject", "width": "248px" },
+                { title: " ", "width": "12px" },
+                { title: " ", "width": "12px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar Emailtemplate">frtip'
+    });
+
+    emailtemplateGrid.on('click', 'button.edit', function () {
+        //alert('emailtemplate');
+        //
+
+        var emailtemplateGrid = $('#emailtemplateTable').DataTable();
+        var data = emailtemplateGrid.row($(this).parents('tr')).data();
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetEmailTemplateByID",
+            data: { Id: data.Id },
+            success: function (response) {
+                //
+              
+                $scope.winEmail.center().open();
+                $scope.$apply(function () {
+                    $scope.EmailObj = response;
+                });
+            },
+            error: function (jqXHR, exception) {
+
+                //
+            }
+        });
+    });
+
+    refreshEmailTemplatesGridData();
+
+    $scope.onAddEmailtemplateClick = function () {
+        $scope.winEmail.center().open();
+    }
+
+    $scope.SaveTemplateData = function (event) {
+        
+        event.preventDefault();
+        if ($scope.validator.validate()) {
+
+            var url = "/Admin/AddEmailTemplate";
+            if ($scope.EmailObj.Id > 0)
+                url = "/Admin/UpdateEmailTemplate";
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: url,
+                data: { emailTemplate: $scope.EmailObj },
+                success: function (response) {
+                    
+                    clearForm();
+                    $scope.winEmail.close();
+                    refreshEmailTemplatesGridData();
+                },
+                error: function (jqXHR, exception) {
+                    
+                    //alert("error");
+                }
+            });
+        }
+    }
+
+    $scope.onCancel = function () {
+        clearForm();
+        $scope.winEmail.close();
+    }
+
+    function clearForm() {
+        $scope.EmailObj = { Id: 0, TemplateTypeName: 0, Name: "", Subject: "", LanguageId: 0 };
+
+    }
+});

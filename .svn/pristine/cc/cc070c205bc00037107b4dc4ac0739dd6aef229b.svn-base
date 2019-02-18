@@ -1,0 +1,69 @@
+﻿SiteApp.controller("SubscriptionController", function ($scope, $http) {
+
+
+    function refreshsubscriptionGridData() {
+        
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Subscription/GetAllEbooks",
+            success: function (data) {
+                
+                subscriptiongrid.clear();
+                subscriptiongrid.rows.add(data).draw();
+            },
+            error: function (jqXHR, exception) {
+                
+            }
+        });
+    }
+
+
+    //var dataset = [
+    //    {
+    //        "Ebooks": "Book1",
+    //        "Price": "50$",
+    //        "Status": "Active"
+    //    }, {
+    //        "Ebooks": "Book2",
+    //        "Price": "70$",
+    //        "Status": "Active"
+    //    }];
+    var subscriptiongrid = $('#subscriptionTable').DataTable({
+        "data": [],
+        "paging": false,
+        "bSort": false,
+        "bInfo": false,
+        "columnDefs": [
+            {
+                "targets":3,
+                "data": null,
+                "width": "70px",
+                "defaultContent":
+                    '<button  class= "k-primary k-button subscribe">Subscribe</button>'
+            }
+        ],
+        "columns":
+            [
+                { title: "Ebooks", "data": "Title", "width": "195px" },
+                { title: "Price", "data": "Price", "width": "195px" },
+                { title: "Status", "data": "Status", "width": "225px" },
+                { title: " ", "width": "30px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar Subscription">frtip'
+    });
+    refreshsubscriptionGridData();
+
+    subscriptiongrid.on('click', 'button.subscribe', function () {
+        alert('subscribe');
+
+    });
+
+
+
+
+
+
+
+});

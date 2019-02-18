@@ -1,0 +1,78 @@
+﻿SiteApp.controller("LessonsController", function ($scope, $http) {
+    $scope.selectedLesson = "Lesson 1";
+
+    $scope.Page = [];
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 1;
+    $scope.maxSize = 10;
+    $scope.totalItems = 10;
+
+
+    //$scope.select= function(e) {
+    //    $(e.item).closest(".k-rpanel").data("kendoResponsivePanel").close();
+    //}
+
+    // function select(e) {
+    //   $(e.item).closest(".k-rpanel").data("kendoResponsivePanel").close();
+    //}
+    //function onSelect(e) {
+    //    kendoConsole.log("Selected: " + $(e.item).find("> .k-rpanel").text());
+    //}
+    //function onCollapse(e) {
+    //    $(".k-state-selected", e.item).removeClass("k-state-selected k-state-focused");
+    //}
+
+    $("#sidebar")
+        .kendoResponsivePanel({
+            breakpoint: 768,
+            orientation: "left"
+        });
+
+
+    $scope.lessonData = new kendo.data.DataSource({
+        data: [],
+        pageSize: 5,
+        previousNext: true
+    });
+    var bookData = [
+        {
+            text: "Book 1", lessons: [{ lessonNo: 1, text: "Book1 lesson 1 text.." },
+            { lessonNo: 1, text: "Book1 lesson 2 text.." },
+            { lessonNo: 2, text: "Book1 lesson 3 text.." },
+            { lessonNo: 3, text: "Book1 lesson 4 text.." },
+            { lessonNo: 4, text: "Book1 lesson 5 text.." },
+            { lessonNo: 5, text: "Book1 lesson 6 text.." }
+            ]
+        },
+        { text: "Book 2", lessons: [] },
+        { text: "Book 3", lessons: [] },
+        { text: "Book 4", lessons: [] },
+        { text: "Book 5", lessons: [] },
+        { text: "Book 6", lessons: [] },
+        { text: "Book 7", lessons: [] },
+        { text: "Book 8", lessons: [] }
+    ];
+    $scope.bookData = new kendo.data.HierarchicalDataSource({
+        data: bookData ,
+        pageable: true,
+    });
+
+    $scope.orientation = "horizontal";
+
+   
+    $('#sidebar li:nth-child(2) span').addClass('k-state-selected');
+    $scope.onChangeLesson = function (dataItem) {
+        //debugger;
+        $scope.selectedLesson = dataItem;
+        $("#sidebar").kendoResponsivePanel("close");
+      //  console.log($('#sidebar li:first span').text());
+       // $('#sidebar li:nth-child(2) span').addClass('k-state-selected');
+    };
+    $scope.onDataBound = function (e) {
+        $('#sidebar li:nth-child(1) span').addClass('k-state-selected');
+        $scope.selectedLesson = bookData[0];
+    }
+
+
+});
+

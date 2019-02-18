@@ -1,0 +1,26 @@
+﻿SiteApp.controller("InfoController", function ($scope, $http) {
+    //alert("hi");
+    $scope.FirstName = "";
+
+    function getUserName() {
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Home/getUserName",
+            success: function (data) {
+                //debugger;
+                $scope.$apply(function () {
+                    $scope.FirstName = data;
+                });
+            },
+            error: function (jqXHR, exception) {
+                //debugger
+            }
+        });
+    }
+    getUserName();
+
+
+
+});

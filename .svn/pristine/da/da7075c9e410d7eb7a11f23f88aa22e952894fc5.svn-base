@@ -1,0 +1,340 @@
+﻿html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Verdana;
+	font-size: 13px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	color: #222;
+	background-color:whitesmoke;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+/*.container{
+    height:100%;
+}
+    .navbar-inverse{
+    padding-right:50px;
+}.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+}
+	*/
+.body-container {
+	margin-top: 25px;
+	background-color: white;
+	padding: 10px;
+    margin-bottom:45px;
+}
+/***********Menu ***************/
+.navbar-inverse {
+	background-color: #001148;
+	border-color: #001148;
+}
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+		border-color: #001148;
+	}
+
+	.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+		color: #fff;
+		background-color: #374573;
+	}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	line-height: 60px; /* Vertically center the text there */
+	background-color: #f5f5f5;
+}
+
+.header-div {
+	/*float: left;*/
+	position: relative;
+	z-index: 10;
+	width: 300px;
+    left:15px;
+}
+.breadcrumb{
+    padding: 5px 15px 0px 0px !important;
+}
+/* Login   */
+
+.btn-login {
+	padding: 10px 18px;
+	background-color: #003a70;
+	font-size: 16px;
+	margin-top: -10px;
+	margin-left: 10px;
+	margin-right: 15px;
+	-webkit-border-radius: 4px !important;
+	-moz-border-radius: 4px !important;
+	border-radius: 4px !important;
+}
+
+	.btn-login:hover {
+		padding: 10px 18px;
+		background-color: #337ab7;
+		text-shadow: 0 1px rgba(0,0,0,0.3);
+		font-size: 16px;
+		margin-top: -10px;
+		margin-left: 10px;
+		-webkit-border-radius: 4px !important;
+		-moz-border-radius: 4px !important;
+		border-radius: 4px !important;
+	}
+
+	.btn-login a {
+		color: #fff;
+	}
+
+		.btn-login a:hover {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.btn-login a:focus {
+			color: #fff;
+			text-decoration: none;
+		}
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+	padding: 30px;
+	width: 100% !important;
+	background-color: #F7F7F7;
+	/*margin: 12% auto;*/
+	font-family: "Open Sans",sans-serif !important;
+}
+
+	.loginmodal-container h1 {
+		text-align: center;
+		font-size: 1.8em;
+		font-family: "Open Sans",sans-serif !important;
+	}
+
+	.loginmodal-container input[type=submit] {
+		width: 20%;
+		display: block;
+		margin-bottom: 10px;
+		position: relative;
+		clear: both;
+		margin: 0 auto;
+	}
+
+    .loginmodal-container input[type=text], .loginmodal-container input[type=password] {
+        height: 44px;
+        width: 100%;
+        margin: 2%;
+        /*float: left;*/
+        font-size: 16px;
+        -webkit-appearance: none;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+        border-top: 1px solid #c0c0c0;
+        padding: 0 8px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+	.loginmodal-container .signup-login input[type=text], .signup-login input[type=password] {
+		width: 46%;
+	}
+
+	.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+		border: 1px solid #b9b9b9;
+		border-top: 1px solid #a0a0a0;
+		-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+		box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+	}
+
+.loginmodal {
+	text-align: center;
+	font-size: 14px;
+	font-family: 'Arial', sans-serif;
+	font-weight: 700;
+	height: 36px;
+	padding: 0 8px;
+}
+
+.loginmodal-submit {
+	border: 0px;
+	color: #fff;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	background-color: #003a70;
+	padding: 10px 0px;
+	font-family: "Open Sans",sans-serif !important;
+	font-size: 16px;
+	-webkit-border-radius: 4px !important;
+	-moz-border-radius: 4px !important;
+	border-radius: 4px !important;
+}
+
+	.loginmodal-submit:hover {
+		border: 0px;
+		text-shadow: 0 1px rgba(0,0,0,0.3);
+		background-color: #337ab7;
+		color: #fff;
+	}
+
+.loginmodal-container a {
+	text-decoration: none;
+	color: #666;
+	font-weight: 400;
+	text-align: center;
+	display: inline-block;
+	opacity: 0.8;
+	transition: opacity ease 0.8s;
+}
+
+.loginmodal-container select {
+	float: left;
+	width: 46%;
+	margin: 2% 2% 4%;
+}
+
+.message-error {
+	color: red !important;
+	font-weight: 700 !important;
+}
+
+.login-help {
+	font-size: 12px;
+}
+
+.modal-backdrop{
+    z-index:200 !important;
+}
+
+.form .register-form {
+    display: none;
+}
+
+.green-dark-new {
+	color: #FFF;
+	background-color: #7e8c58;
+	border-color: #7e8c58;
+}
+
+.btn-search-submit {
+	margin-top: 8px;
+}
+
+@media only screen and (max-width: 992px) {
+	.wrap-country {
+		text-align: center;
+		clear: both;
+		float: none !important;
+		margin: 0 auto;
+	}
+
+	#nav {
+		text-align: center;
+	}
+
+	.btn-search-submit {
+		margin-top: 0;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.loginmodal-container .signup-login input[type=text], .signup-login input[type=password], .loginmodal-container .signup-login select {
+		width: 100% !important;
+		margin: 2% 0;
+		float: none;
+	}
+
+	.loginmodal-container .signup-login select {
+		margin: 8% auto 0%;
+	}
+
+	.loginmodal-container .signup-login input[type=submit] {
+		width: 40%;
+		margin-top: 10%;
+	}
+}
+
+
+
+
+
+
+
+
+
+label{
+    font-weight:bold !important;
+}
+
+
+
+table.dataTable thead th, table.dataTable thead td{
+    padding:8px 10px !important;
+}
+.table-div {
+    /*float: right;*/
+    position: relative;
+    z-index: 5;
+    /*top: -25px;*/
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+
+/* Window styling*/
+.k-window-content .row {
+	margin-right: -10px !important;
+	margin-left: -10px !important;
+}
+
+/* Error */
+span.k-widget.k-tooltip-validation {
+	font-size: 12px !important;
+	color: red !important;
+	text-align: left;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+	color: red;
+}
+
+.k-invalid-msg .k-icon {
+	display: none !important;
+}
+
+/*  datatable  */
+.toolbar {
+	float: left;
+}
+
+.dataTables_wrapper {
+	/*margin-top: -24px;
+    z-index:-1;*/
+}
+
+.k-header {
+	border: none !important;
+	height: 100%;
+}

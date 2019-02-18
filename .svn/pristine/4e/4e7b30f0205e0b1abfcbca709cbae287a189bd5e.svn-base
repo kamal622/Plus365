@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5B8F4237-4434-4C1F-AD20-58DF569C436B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "365Plus.Web", "Presentation\365Plus.Web\365Plus.Web.csproj", "{5911189A-DDEA-432D-9483-9B7B34928E26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{3D710A60-6620-4A1F-BB42-32431274B0BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "365Plus.Core", "Libraries\365Plus.Core\365Plus.Core.csproj", "{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "365Plus.Data", "Libraries\365Plus.Data\365Plus.Data.csproj", "{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "365Plus.Service", "Libraries\365Plus.Service\365Plus.Service.csproj", "{59910B23-835B-4118-8632-E78247063FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "365Plus.Web.Framework", "Presentation\365Plus.Web.Framework\365Plus.Web.Framework.csproj", "{21686FBA-599A-496D-B5A8-A6F51B95C909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5911189A-DDEA-432D-9483-9B7B34928E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5911189A-DDEA-432D-9483-9B7B34928E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5911189A-DDEA-432D-9483-9B7B34928E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5911189A-DDEA-432D-9483-9B7B34928E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59910B23-835B-4118-8632-E78247063FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59910B23-835B-4118-8632-E78247063FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59910B23-835B-4118-8632-E78247063FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59910B23-835B-4118-8632-E78247063FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21686FBA-599A-496D-B5A8-A6F51B95C909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21686FBA-599A-496D-B5A8-A6F51B95C909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21686FBA-599A-496D-B5A8-A6F51B95C909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21686FBA-599A-496D-B5A8-A6F51B95C909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5911189A-DDEA-432D-9483-9B7B34928E26} = {5B8F4237-4434-4C1F-AD20-58DF569C436B}
+		{0DE5FA00-D4E9-493A-AACD-86F0F21E83E5} = {3D710A60-6620-4A1F-BB42-32431274B0BF}
+		{3BE2C6A6-1BF4-4A50-9E0B-4DE7C0090E8C} = {3D710A60-6620-4A1F-BB42-32431274B0BF}
+		{59910B23-835B-4118-8632-E78247063FB6} = {3D710A60-6620-4A1F-BB42-32431274B0BF}
+		{21686FBA-599A-496D-B5A8-A6F51B95C909} = {5B8F4237-4434-4C1F-AD20-58DF569C436B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F34D50A5-66DF-4A05-9940-3653ADC6A9C3}
+	EndGlobalSection
+EndGlobal

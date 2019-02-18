@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Country";
+}
+
+
+<div class="body-container" ng-controller="CountryController" id="country">
+    <div class="header-div">
+        <kendo-button class="k-primary" ng-click="onAddCountryClick()">Add Country</kendo-button>
+    </div>
+    <div class="table-div">
+        <table id="Countrytable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+
+    <div kendo-window="winCountry" k-title="'Add Country'" id="addcountry" k-width="440" k-visible="false" k-resizable="false" k-modal="true">
+
+        <form kendo-validator="validator">
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label for="Name">Name</label>
+                </div>
+                <div class="col-md-5">
+                    <input name="Name" ng-model="CountryObj.Name" placeholder="Name" class="k-textbox" style="width:100%;" required validationMessage="Enter Name" />
+                    <span class="k-invalid-msg" data-for="Name"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label for="IsNationalLanguage">National Language</label>
+                </div>
+                <div class="col-md-5">
+                    <select name="NationalLanguage" kendo-drop-down-list k-ng-model="CountryObj.NationalLanguage"
+                            k-data-text-field="'Name'"
+                            k-value-primitive="true"
+                            class="kendodropdown"
+                            style="width:100%;"
+                            k-on-change="OnChangeLanguage(kendoEvent)"
+                            k-data-value-field="'Id'"
+                            required validationMessage="Select Language"
+                            placeholder="'Select Language...'"
+                            k-data-source="Languagedata"></select>
+                    <span class="k-invalid-msg" data-for="NationalLanguage"></span>
+
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label for="otherlanguages">Other Languages</label>
+                </div>
+                <div class="col-md-5">
+                    <select kendo-multi-select k-ng-model="CountryObj.OtherLanguages"
+                            name="OtherLanguages"
+                            k-data-text-field="'Name'"
+                            k-value-primitive="true"
+                            style="width:100%;"
+                            k-on-change="OnChangeLanguage(kendoEvent)"
+                            k-data-value-field="'Id'"
+                            required validationMessage="Select Language"
+                            id="nationallanguage"
+                            k-option-label="'Select Language'"
+                            k-data-source="Languagedata"></select>
+                    <span class="k-invalid-msg" data-for="OtherLanguages"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <kendo-button type="submit" class="k-primary" ng-click="saveCountryData($event)">Save</kendo-button>
+                    <kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/CountryController.js"></script>
+}
+

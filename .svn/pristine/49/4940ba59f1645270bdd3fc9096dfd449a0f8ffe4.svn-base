@@ -1,0 +1,49 @@
+﻿using _365Plus.Service.Ebooks;
+using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using _365Plus.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Mvc;
+
+namespace _365Plus.Web.Controllers
+{
+    public class SubscriptionController : Controller
+    {
+
+        private readonly EbookService _ebookService;
+        public SubscriptionController(EbookService ebookService)
+        {
+            this._ebookService = ebookService;
+        }
+
+        // GET: Subscription
+        [Authorize]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public JsonResult GetAllEbooks()
+        {
+            var data = _ebookService.GetAllEbooks();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEbooksByID(double id)
+        {
+            var data = _ebookService.GetEbooksByID(id);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        //Lessons
+        [Authorize]
+        public ActionResult Lessons()
+        {
+            return View();
+        }
+    }
+}

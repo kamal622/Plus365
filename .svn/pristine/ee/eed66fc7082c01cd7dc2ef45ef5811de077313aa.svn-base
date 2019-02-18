@@ -1,0 +1,124 @@
+﻿
+@{
+	ViewBag.Title = "Lessons";
+	
+}
+
+<style>
+
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+    #Lessons {
+        height: 90%;
+    }
+
+    #sidebar {
+        /* panel background should be set to match design */
+        background: #e2e4e7;
+        height: 100%;
+        border-right: 1px solid #e2e4e7;
+        /*padding :30px 15px;*/
+    }
+
+        #sidebar.k-rpanel-left, #sidebar.k-rpanel-right {
+            min-width: 200px !important;
+        }
+
+    article {
+        /* clear the floating sidebar */
+        overflow: hidden;
+        padding: 15px;
+    }
+
+    header {
+        padding: 5px 0px 5px 15px;
+        color: #fff;
+        background-color: grey;
+        background-image: linear-gradient(to top, #014F80 0%, #092646 100%);
+    }
+
+    h1 {
+        display: inline;
+    }
+
+    @@media only screen and (max-width: 768px) {
+
+        .k-rpanel-left {
+            top: 45px;
+            min-width: 320px;
+            height: 100%;
+            z-index: 1;
+        }
+    }
+</style>
+
+
+<div class="row" ng-controller="LessonsController" id="Lessons">
+
+    <!-- responsive panel -->
+    <nav id="sidebar">
+        @*<a href="#">Lesson1</a>
+            <a href="#">Lesson2</a>*@
+        <div kendo-panel-bar="panelbar"
+                 k-data-source="bookData"
+                 k-on-change="onChangeLesson(dataItem)"
+             k-data-bound="onDataBound">
+                <span k-template>
+                    {{dataItem.Title}}
+                </span>
+            </div>    
+    </nav>
+
+    <article id="content">
+        <div>
+            <button class="k-rpanel-toggle"><i class="k-icon k-i-menu"></i></button>
+        </div>
+        <button ng-click="backToTop()" id="myBtn" title="Go to top">Top</button>
+
+
+        <div ng-show="selectedLesson.Title =='Book 1'">
+            @Html.Partial("_Lesson1Partial")
+        </div>
+        <div ng-show="selectedLesson.Title =='Book 2'">
+            @Html.Partial("_Lesson2Partial")
+        </div>
+        <div ng-show="selectedLesson.Title =='Book 3'">
+            @Html.Partial("_Lesson3Partial")
+        </div>
+        <div ng-show="selectedLesson.Title =='Book 4'">
+            @Html.Partial("_Lesson4Partial")
+        </div>
+        <div ng-show="selectedLesson.Title =='Book 5'">
+            @Html.Partial("_Lesson5Partial")
+        </div>
+        <div ng-show="selectedLesson.Title =='Book 6'">
+            @Html.Partial("_Lesson6Partial")
+        </div>
+
+    </article>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/LessonsController.js"></script>
+}
+
+

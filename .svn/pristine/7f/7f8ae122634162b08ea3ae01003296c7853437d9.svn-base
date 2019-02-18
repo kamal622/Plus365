@@ -1,0 +1,143 @@
+﻿
+@{
+	ViewBag.Title = "Lessons";
+	
+}
+
+<style>
+
+	#back2Top {
+		width: 60px;
+		line-height: 40px;
+		overflow: hidden;
+		z-index: 555;
+		display: none;
+		cursor: pointer;
+		-moz-transform: rotate(270deg);
+		-webkit-transform: rotate(270deg);
+		-o-transform: rotate(270deg);
+		-ms-transform: rotate(270deg);
+		transform: rotate(270deg);
+		position: fixed;
+		bottom: 50px;
+		right: 70px;
+		background-color: #001148;
+		color: #FFF;
+		padding: 4px 4px 4px 4px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 30px;
+		margin: 2px;
+		/*text-align: center;
+		font-size: 30px;
+		text-decoration: none;*/
+		border-radius: 12px; /*12px,8px,4px,2px*/
+	}
+
+	#back2Top:hover {
+			background-color: #428bca;
+			color: #FFF;
+			z-index: 999;
+		}
+
+    #Lessons {
+        height: 90%;
+    }
+
+    #sidebar {
+        /* panel background should be set to match design */
+        background: #e2e4e7;
+        height: 100%;
+        border-right: 1px solid #e2e4e7;
+        /*padding :30px 15px;*/
+    }
+
+        #sidebar.k-rpanel-left, #sidebar.k-rpanel-right {
+            min-width: 200px !important;
+        }
+
+    article {
+        /* clear the floating sidebar */
+        overflow: hidden;
+        padding: 15px;
+    }
+
+    header {
+        padding: 5px 0px 5px 15px;
+        color: #fff;
+        background-color: grey;
+        background-image: linear-gradient(to top, #014F80 0%, #092646 100%);
+    }
+
+    h1 {
+        display: inline;
+    }
+
+    p {
+        padding: 2em;
+    }
+
+    @@media only screen and (max-width: 768px) {
+
+        .k-rpanel-left {
+            top: 45px;
+            min-width: 320px;
+            height: 100%;
+            z-index: 1;
+        }
+    }
+</style>
+
+
+<div class="row" ng-controller="LessonsController" id="Lessons">
+
+    <!-- responsive panel -->
+    <nav id="sidebar">
+        @*<a href="#">Lesson1</a>
+            <a href="#">Lesson2</a>*@
+        <div kendo-panel-bar="panelbar"
+                 k-data-source="bookData"
+                 k-on-change="onChangeLesson(dataItem)"
+             k-data-bound="onDataBound">
+                <span k-template>
+                    {{dataItem.Title}}
+                </span>
+            </div>    
+    </nav>
+
+	<article id="content">
+		<div>
+			<button class="k-rpanel-toggle"><i class="k-icon k-i-menu"></i></button>
+		</div>
+
+		<div ng-show="selectedLesson.Title =='Book 1'">
+			@Html.Partial("_Lesson1Partial")
+		</div>
+		<div ng-show="selectedLesson.Title =='Book 2'">
+			@Html.Partial("_Lesson2Partial")
+		</div>
+		<div ng-show="selectedLesson.Title =='Book 3'">
+			@Html.Partial("_Lesson3Partial")
+		</div>
+		<div ng-show="selectedLesson.Title =='Book 4'">
+			@Html.Partial("_Lesson4Partial")
+		</div>
+		<div ng-show="selectedLesson.Title =='Book 5'">
+			@Html.Partial("_Lesson5Partial")
+		</div>
+		<div ng-show="selectedLesson.Title =='Book 6'">
+			@Html.Partial("_Lesson6Partial")
+		</div>
+		<a id="back2Top" title="Back to top" href="#">
+			<i class="material-icons" style="display: block;left: 1100px;width: 35px;height: 35px; text-align:center " >></i>
+		</a>
+	</article>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/LessonsController.js"></script>
+}
+
+

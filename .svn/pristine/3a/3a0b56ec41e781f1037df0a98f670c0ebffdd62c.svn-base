@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Subscription";
+}
+
+<div class="body-container" ng-controller="SubscriptionController" id="Subscription">
+    <div class="table-div">
+        <table id="subscriptionTable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/SubscriptionController.js"></script>
+}

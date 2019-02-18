@@ -1,0 +1,240 @@
+﻿@{
+	ViewBag.Title = "FAQ";
+
+}
+
+<div ng-controller="FAQController" id="FAQs" class="body-container">
+
+    <div class="panel-body">
+        <h4>Frequently Asked Questions<tab></tab><span class="glyphicon glyphicon-question-sign"></span></h4>
+
+        <div class="accordion">Q1. CAN YOU TELL SOME MORE ABOUT THE CONTENT OF THESE 6 EBOOKS ?</div>
+        <div class="panel">
+            <h6><span class="label label-primary">Answer</span></h6> <b>
+                The 4 first ebooks are about
+                LITTLE, but very important ATTITUDE CHANGES WITH HUGE POSITIVE RESULTS.
+            </b>
+            They handle subjects that not so long ago were considered as ‘dreaming’ or ‘unrealistic fantasies’ only proclaimed by religions.  <b>But NOW</b> proven over and over by science.
+            F.ex.	 THOUGHTS can TRANSFER into MATTER.
+            THOUGHTS can CREATE YOUR FUTURE.
+            + most importantly : <b>How exactly to do it ?</b>
+            How to change your THOUGHTS, your WORDS and your ACTIONS.
+            <b>  The last 2 ebooks  are about what people would call  “ MIRACLES “ ,</b>
+            miraclesthatyou can apply to yourself,
+            <b>
+                and HOW EXACTLY to do it.
+                I know
+            </b> whati’mtalking about, just like youwill, <b>IF YOU APPLY IT.</b>
+            <b> TEST IT FIRST</b>
+            We advize you to first only pay EBOOK 1
+            Then I  advize you to start with a small goal,
+            and  although normally it takes more months to function,
+            IF you do the little daily homeworkvery well
+            you might see much more quickly your desired results
+        </div>
+
+        <div class="accordion">Q2. WHAT GUARANTEE DO YOU GIVE?</div>
+        <div class="panel">
+            <h6><span class="label label-primary">Answer</span></h6>
+            <u>I simply cannot</u> guarantee your result, because  your result depends for 100 % on YOUR application of our information.In 6 lessons you will learn how to apply a number of UNIVERSAL PRINCIPLES.
+            Applying them all, automatically opens the floodgates of ABUNDANCE.<u>They will solve all of your problems.</u>
+
+            Why are ‘problems’ called ‘problems’?Because <u>always</u> , for the person that has the problem,
+            the problem seems  ‘immense’ , even ‘impossible’ to solve.Problems with your partner or your children,with your parents or family, finding a job, or working, or keeping your job Problems with your health or financial problems  a.s.o.
+
+            You know that the ‘Law of GRAVITY’  ALWAYS functions.Hold an object in your hand, loosen it and it will fall.It has to, it is impossible for it not to fall.
+            Or look at ‘electricity’.   Electricity can be proven,but it is difficult to be ‘explained’. You just have to accept it.
+
+            I cannot completely ‘explain’ the spiritual principles.But if you ‘believe me’ + ‘accept’ these principles +
+            ‘believe them’ and  most of all APPLY THEM, you will be the living proof of the law of Abundance, because abundance ALWAYS is their automatic result.
+            Abundance  ALWAYS COMES to those who apply these principles.It simply HAS TO.  Abundance cannot ‘not’ come. It is a universal LAW, just like gravity.
+
+            <strong>But the result depends completely on you !!!</strong>You have to apply these principles to ‘initiate’ the law of abundance as an automatic result ,just like you have to take an object, lift it up, and loosen it to initiate the law of gravity.
+        </div>
+
+        <div class="accordion">Q3. HOW LONG WILL IT TAKE BEFORE I SEE RESULTS ?</div>
+        <div class="panel">
+            <h6><span class="label label-primary">Answer</span></h6>
+            During 3 months you will have access to 1 new ebook with simple and easy principles every 15 days.
+            You will have to apply each of these principles for at least 30 days because it takes 30 days to influence and change your subconscience.
+            The first 15 days : you only concentrate on the first simple tasks The next 15 days : you keep applying the first tasks but you add a 2nd set of simple tasks,
+            The following 15 days the very first tasks have become a ‘habit or belief’ but you keep applying all of them,aso…..The first month you may experience some difficulties, because you have to DO something new.
+            From the second month it all becomes as easy as drinking water,because all the principles are inter-related,and reinforce eachother for ever stronger results aso …….
+            Depending on
+            <ol>
+                <li>
+                    your personal level of awareness and consciousness ,
+                </li>
+                <li>
+                    your willingness to apply our simple instructions
+                </li>
+                <li>
+                    your discipline to keep doing so every day
+                </li>
+            </ol>
+            you will feel stronger and more confident after the 1st month.
+            But experiencing  the abundance will probably take 4-5 months,
+            because you  have to change your wrong and rusted beliefs.
+            If you don’t want to do this <u>homework for 15-30 minutes/day</u>
+            during 4 months : FORGET IT
+            because this course is NOT about KNOWING, but about DOING !!!!!!!
+        </div>
+
+        <div class="accordion">Q4. WHAT IS MY RISK ?</div>
+        <div class="panel">
+            <h6><span class="label label-primary">Answer</span></h6>
+            There are only 2 risks :
+            <strong>The biggest risk</strong> is the ‘reptilian brain’ in your subconscience
+            This little devil will use all the tricks in the book to keep you as you are,
+            because it hates change.
+            <ul>
+                <li>
+                    Example  : Each new principle is simple, maybe too simple.
+                    So simple that your ‘ego’,  your internal ‘devil’,  will tell you :
+                    This is ridiculous, you can as well ‘not’ do it every day
+                </li>
+                <li>
+                    Example  : Your little devil always uses your own voice.
+                    When you hear yourself talking, it is never your higher self,
+                    but your lower self, your reptilian brain.
+                    (your higher self mostly speaks to you via ‘feelings’)
+                </li>
+            </ul>
+            How many times do you (your ego) say to yourself :  ‘i already know ’
+            But there is a HUGE DIFFERENCE between ‘knowing it’ and  ‘KNOWING IT’
+            We will tell you exactly how to REALLY KNOW something.
+            This ‘365PLUS’ abundance project starts with  REALLY KNOWING.
+
+            <u>The other risk</u> is that you will not apply completely all the lessons
+            and excercises that we propose, for whatever reasons.
+            If you really want peace, joy, liberty and abundance
+            you may, just like many others, spend 5 to 10 years of your time
+            and many thousands of dollars to guru’s, courses and books,
+            and years later, you might remember this basic wonder-course you once bought,
+            apply it completely, and finally enjoy it all.
+
+            <strong>
+                If you really want to see abundance in your life,don’t forget that YOU ARE, so to speak,  THE CAPTAIN  of a huge  OIL TANKER. With only 1 small steering wheel and some buttons YOU are in complete control.
+                If you really want to see abundance in your life, don’t forget that YOU ARE, so to speak, THE CAPTAIN  of a huge  OIL TANKER.
+                With only 1 small steering wheel and some buttons YOU are in complete control.The enormously powerful engines of your tanker OBEY YOUR ORDERS.You only have to EXPRESS YOUR ORDERS and STAY IN CONTROL EVERY MINUTE that you are in the captains seat, at your steering wheel.
+            </strong>
+            Even if you have a wishy-woshy character, these 4 months will make you stronger,normally strong enough to carry the weight of the abundance you desire.The universe will test you during these 4 months, and will ‘absolutely+only’ give you the amount of abundance that you can carry.THIS IS YOUR ONLY POSSIBILITY TO LEAVE ALL YOUR PROBLEMS BEHIND! TAKE IT WITH BOTH HANDS !!!
+
+        </div>
+
+        <div class="accordion">Q5. WHY PAY FOR THIS INFORMATION ?</div>
+        <div class="panel">
+            <h6><span class="label label-primary">Answer</span></h6>
+            &nbsp&nbsp Because my solution to your problem is <strong>supervaluable</strong> and at a <strong>ridiculous low price</strong>
+            <ul>
+                <li>
+                    Step by step, I TELL YOU EXACTLY HOW to get control and mastery over your life.
+                </li>
+                <li>
+                    More important : i tell you how to get to the SOURCE of prosperity and  abundance in every area of your life.
+                </li>
+            </ul>
+            <strong>YOUR PRICE SEEMS HIGH </strong>
+
+            Your EGO(mentioned later in the course) tells you that,because it does not want you to change.
+            BUT THE PRICE OF THE COURSEIS PROBABLY TOO LOW
+            <ol>
+                <li>
+                    For the supreme quality you get
+                </li>
+                <li>
+                    Later, prices will keep rising
+                </li>
+            </ol>
+            because, if you are like 99 % of people,you will only apply this course in your life of you feel the cost.
+        </div>
+
+        <div class="accordion">Q6. WHY SUBSCRIBE NOW ?</div>
+        <div class="panel"><h6><span class="label label-primary">Answer</span></h6>
+            Because you know our website, you can subscribe later as well,but note that our prices will get higher, practically every month
+            + it will be more difficult to find free email addresses.
+            Think for ONLY 5 DAYS,because It takes ONLY 4 MONTHS of dedicated concentration  at +- 30 minutes a day. There are ONLY 3 HABITS to improve : your THOUGHTS, your WORDS and your ACTIONS You have ONLY 2 OPTIONS : The SAME PROBLEMS for the rest of your life or ABUNDANCE And for now ONLY 1 WISE DECISION to
+            CLICK  HERE NOW, to freely read or complete your ADMIN PAGE to subscribe or pay
+            <font class="title">CLICK  HERE NOW</font>, to freely read the SUBSCRIPTION + PAYMENT-PAGE
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+	.logo {
+		margin-top: 120px;
+		color: #ff9c02;
+		font-size: 50px;
+		font-weight: bold;
+		font-family: 'Acme', sans-serif;
+		line-height: 62px;
+	}
+
+	.body-container {
+		background-color: transparent;
+	}
+    /* Style the element that is used to open and close the accordion class */
+    div.accordion {
+        background-color: #eee;
+        /*color: darkslateblue;*/
+        color: #444;
+        cursor: pointer;
+        padding: 12px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        margin-bottom: 6px;
+    }
+
+    h4 {
+        color: grey;
+    }
+
+    /* Add a background color to the accordion if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    div.accordion.active, p.accordion:hover {
+        background-color: #ddd;
+    }
+
+    div.accordion:after {
+        font-size: 13px;
+        float: right;
+        font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
+        content: "\e114";
+        position: relative;
+        right: 24px;
+    }
+
+    div.accordion.active:after {
+        content: "\e080";
+        color: grey;
+    }
+
+    /* Style the element that is used for the panel class */
+    div.panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s ease-in-out;
+        opacity: 0;
+        margin-bottom: 6px;
+    }
+
+    div.panel.show {
+            opacity: 1;
+            max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+        }
+
+    .title {
+        font-weight: 600;
+        color: darkblue;
+    }
+</style>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/FAQController.js"></script>
+}

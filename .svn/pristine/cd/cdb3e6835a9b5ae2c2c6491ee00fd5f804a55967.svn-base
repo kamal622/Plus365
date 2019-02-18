@@ -1,0 +1,37 @@
+﻿SiteApp.controller("ClientsController", function ($scope, $http) {
+
+    function refreshClientsGridData() {
+        
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetAllClients",
+            success: function (data) {
+                
+                ClientsGrid.clear();
+                ClientsGrid.rows.add(data).draw();
+            },
+            error: function (jqXHR, exception) {
+                
+            }
+        });
+    }
+
+    var ClientsGrid = $('#clientsTable').DataTable({
+        "data": [],
+        "paging": false,
+        "bSort": false,
+        "bInfo": false,
+        "columns":
+            [
+                { title: "First Name", "data": "FirstName", "width": "118px" },
+                { title: "Email", "data": "PersonalEmail", "width": "120px" },
+                { title: "User Name", "data": "UserName", "width": "118px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar Clients">frtip'
+    });
+
+    refreshClientsGridData();
+});

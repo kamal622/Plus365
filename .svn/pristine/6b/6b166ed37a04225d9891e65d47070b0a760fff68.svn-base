@@ -1,0 +1,494 @@
+﻿@{
+    ViewBag.Title = "Info";
+}
+
+<style>
+    .title {
+        font-weight: 600;
+        color: darkblue;
+    }
+</style>
+<div class="row container text-justify">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 jumbotron">
+
+        <div class="row">
+            <div class="col-md-12 ">
+                Dear reader,
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                We invite you to know all about
+                <strong>HOW to create ABUNDANCE IN YOUR LIFE   365 days per year.</strong> Not only financial abundance, but abundance in every area of your life:health, family, relations, peace, freedom aso….
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <strong> YOU  HAVE  A  FUNDAMENTAL  RIGHT  TO  LIVE IN  ABUNDANCE.</strong>
+                You are here to lead an abundant life and be happy, radiant an free.You should therefore, have all the money you need , and much more,
+                to lead a full, happy and prosperous life.You are here to grow, expand and unfold spiritually, mentally and physically.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                There is a very small possibility that you already have all the abundance that you want in your life.
+                In that case this message is NOT for you.Simply do not read it, and do not subscribe,and you will never ever receive another email from <strong>‘365PLUS.com’.</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                But <strong>IF YOU WANT MORE ABUNDANCE :</strong>My solution is <strong>EASY and it ALWAYS works…… if only you apply it !</strong> <br />
+                It does not matter how you look, how much you earn, how clever you are or what you studied,how healthy you are, how old you are, how much money or properties you have, who you know aso…
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Let me first explain <strong>WHY YOU SHOULD PARTICIPATE !</strong> Everybody longs for financial abundance, health, pleasant family- and other relations, living in peace and  freedom, just feeling really happy.
+                <u> But the reality is that the majority of all the people survive in more or less poverty,in stress, uncertainty or fear, being more or less suppressed or exploited, sick or unhappy. </u>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                If we concentrate on ‘having more money’, the ‘getting rich’  business is a ‘huge billion dollar business’<u>BUT it works only for 1 out of thousand readers.</u>One of these authors even explains WHY the results of all of them are so disappointing.
+                But i think that his system as well creates no lasting results.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <u>My lessons are based on wisdom from thousands of years,easy to apply and mostly proven nowadays by neuroscience.</u>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                First I ask some small daily efforts from you as a kind of necessary preparation, to open up your mind for the SIMPLE BUT UNBELIEVABLY POWERFUL TRUTH that will change your life completely when you apply it and keep applying that wisdom to attract ever MORE ABUNDANCE in every area of your life.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Because there are so many ‘problems’, ‘misery’ and ‘hope’,even in so called ‘rich’ countries i want to share this with as many as possible people because everyone deserves real and lasting abundance and the universe is in-exhaustible
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                This ABUNDANCE INFORMATION is delivered in the form of 6 E-BOOKS Each e-book containing different practical lessons.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <u> I don’t give it for free,</u>
+                because it is the BEST INVESTMENT of your entire life !!!!
+                and because, in general, people only appreciate and apply
+                information for which they paid.
+                But what you pay will only be a fraction of the avalanche
+                of abundance that will follow, <u>IF you apply my easy solution.</u>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <u>The only explanation that i give you for FREE is WHY 99,99 % of the people that were born in poor families, stay poor unless they apply my system.</u>Even if they win the lottery,  they loose it all very quickly.  Generally speaking they even are not really interested in ‘getting rich’ For ages the expression « the apple doesn’t fall far from the tree » is about this subject.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                WHY DOES THE APPLE NOT FALL FAR FROM THE TREE ?
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                If you were born in a wealthy family, big chances that you will have abundance in your life.Born in a ‘medium income’ family ? Normally you will have a ‘medium’ income. Born in a poor family ? I bet you have to struggle in your life for a basic income.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <strong>SIMPLY</strong> explained (technically not 100% correct)this is so <strong>BECAUSE YOUR BRAIN  HAS 2 PARTS</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <ol>
+                    <li>
+                        Your CONSCIENCE that contains your will, character, higher thinking, ideas aso,
+                        and that hungers for new experiences, new information, new knowledge,
+                        but it can only process an average of 5 – 7 bits of information per second.
+                    </li>
+                    <li>
+                        Your SUBCONSCIOUS that keeps your body safe and alive.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                It processes 10 quadrillion operations per second (10.000.000.000.000.000) and takes 6 trillion (6.000.000.000.000) decisions per second, to organize the 60 trillion cells in your body.
+                Necessary decisions, if you know that each cell not only contains your complete DNA, but also houses different chemical factories and much more.This subconscious contains your ‘reptilian brain’, your ‘ego’.It’s basic task is to make your body function and keep it alive.In fact it is mostly a big database that contains all your past experiences, everything you saw, heard, felt, smelled and tasted.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                It also helps your ‘body’ to have more pleasure and avoid pain at all costs.It doesn’t like anything that’s new, because it only knows and can use your ‘past’ experiences to help you, and  because it cannot help you in ‘unknown terrain’
+                When you were born, this ‘database’ was empty, ready to absorb all experiences. And because it depends on people who give your body food and attention, it stores as ‘good’ all that it sees and hears form its caretakers.(parents, other persons in the family, nurses, teachers aso)
+                Then, around the age of 4-6,comes the WHY-period. When children endlessly keep asking their parents WHY, on every subject.This is very difficult for most parents,because they never thought about it themselves.They can only tell their children how they themselves see the world, which is based on what they learned as child, their education, young experiences aso.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Based on these answers, and the experiences of the child, it forms its own ‘funded certainties’ about its surroundings and about the world.BUT there is something very important that you should also know!! Your senses (seeing, hearing, touching, smelling and tasting) are sending millions of bits of information to your subconscience, every second. Your subconscious ‘judges’ all this in milliseconds. Only information that it considers ‘correct’ and ‘safe’ is stored in it’s database, and only a very tiny part of that is transferred to your conscience.
+                This means that what you ‘see’ is not what your ‘eyes see’ but what your subconscious lets pass to your ‘visual brainparts’, after having thrown away most of what your eyes see, and only saving the parts that it considers ‘good’ for you.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                So you only ’see’ what passes the ‘safety barriers’ and the ‘beliefs’ of your subconscience. <u>You ‘see’ a very tiny and colored  little bit, +- half a second after your eyes have seen ‘the full reality’ </u>
+                Same with ‘what you hear’ also…This ‘filtered/colored information’ automatically is a ‘confirmation’ of your worldview, and this way your ‘colored beliefs’ were formed.
+                And so your life will normally be a ‘copy’ of what you accepted as ‘true’ before the age of +- 7, and your unbelievably powerful subconscious will not accept ‘new truth’ when you get older.This is why the apple doesn’t fall far from the tree.
+                <u>But i found the perfect combination of solutions to influence and bypass the subconscious, to finally live in the abundance that your conscience wants.</u>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <b>
+                    This system can easily be applied by ANYONE.!!! YOU ONLY HAVE TO DO IT !!!
+                </b>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Your participation-price :
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                If we don’t receive other email addresses from you, your contibution for all the 6 ebooks together is  999 $ + the cost of sending the money (zero if you use Transferwise)
+                But if you want to earn a large reduction on our basic price, by inviting minimum 10 or 20 or 40 or 80 friends and relatives of which you think that they deserve more abundance, this way
+                helping us to spread this good news of KNOWING HOW to devellop SELFCONSCIENCE and INNER POWER to become FREE of all FEAR, leading to an ABUNDANCE of EVERYTHING you might need to create a HAPPY FUTURE.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                With 10 accepted email-address-points,
+                <ul>
+                    <li>
+                        it is only 894 $ + cost of moneytransfer = 100 $ saved.
+                    </li>
+                    894 for the complete package OR  149 $ per ebook if you pay them seperately With 20 accepted email-address-points,
+                    <li>
+                        it is only 798 $ + cost of moneytransfer = 200 $ saved
+                    </li>
+                    798 for the complete package OR  133 $ per ebook if you pay them seperately With 40 accepted email-address-points,
+                    <li>
+                        it is only 696 $ + cost of moneytransfer = 300 $ saved
+                    </li>
+                    696 for the complete package OR  116 $ per ebook if you pay them seperately With 80 accepted email-address-points,
+                    <li>
+                        it is only 594 $ + cost of moneytransfer = 400 $ saved
+                    </li>
+                    594 for the complete package OR  99 $ per ebook if you pay them seperately
+                </ul>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                In  the course we will explain the 2 reasons WHY people who give us extra email-addresses
+                get a lower price for the course.The second reason will not only surprize you.That reason alone is MORE THAN WORTH the normal price of all the ebooks combined.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>Possible questions:</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>WHAT GUARANTEE DO YOU GIVE?</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <u>I simply cannot</u> guarantee your result, because  your result depends for 100 % on YOUR application of our information.In 6 lessons you will learn how to apply a number of UNIVERSAL PRINCIPLES.
+                Applying them all, automatically opens the floodgates of ABUNDANCE.<u>They will solve all of your problems.</u>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Why are ‘problems’ called ‘problems’?Because <u>always</u> , for the person that has the problem,
+                the problem seems  ‘immense’ , even ‘impossible’ to solve.Problems with your partner or your children,with your parents or family, finding a job, or working, or keeping your job Problems with your health or financial problems  a.s.o.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                You know that the ‘Law of GRAVITY’  ALWAYS functions.Hold an object in your hand, loosen it and it will fall.It has to, it is impossible for it not to fall.
+                Or look at ‘electricity’.   Electricity can be proven,but it is difficult to be ‘explained’. You just have to accept it.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                I cannot completely ‘explain’ the spiritual principles.But if you ‘believe me’ + ‘accept’ these principles +
+                ‘believe them’ and  most of all APPLY THEM, you will be the living proof of the law of Abundance, because abundance ALWAYS is their automatic result.
+                Abundance  ALWAYS COMES to those who apply these principles.It simply HAS TO.  Abundance cannot ‘not’ come. It is a universal LAW, just like gravity.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <strong>But the result depends completely on you !!!</strong>You have to apply these principles to ‘initiate’ the law of abundance as an automatic result ,just like you have to take an object, lift it up, and loosen it to initiate the law of gravity.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <strong>The 4 first ebooks are about LITTLE ATTITUDE CHANGES WITH HUGE CONSEQUENCES.</strong>
+                They handle subjects that not so long ago were considered as ‘dreaming’ or ‘unrealistic fantasies’ only proclaimed by religions.<strong>But NOW</strong> proven over and over by science.
+                Namely that THOUGHTS can TRANSFER into MATTER.
+                That your THOUGHTS can CREATE YOUR FUTURE. + <strong>How exactly</strong> to change your THOUGHTS, your WORDS and your ACTIONS.<strong>
+                    The last 2 ebooks  are about MIRACLES, miracles that you can apply to yourself,
+                    and HOW EXACTLY to do it.I know what i’m talking about, just like you will,IF YOU APPLY IT.
+                </strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Because my solution to your problem is <u>supervaluable</u> and at a <u>ridiculous low price</u>
+                <ul>
+                    <li>
+                        Step by step, I TELL YOU EXACTLY HOW to get control and mastery over your life.
+                    </li>
+                    <li>
+                        More important : i tell you how to get to the SOURCE of prosperity and  abundance in every area of your life.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Your EGO  ( mentioned later in the course) tells you that,
+                because it does not want you to change.
+                BUT THE PRICE OF THE COURSEIS PROBABLY TOO LOW
+                <ol>
+                    <li>
+                        for the supreme quality you get
+                    </li>
+                    <li>
+                        later, prices will keep rising
+                    </li>
+                </ol>
+                because, if you are like 99 % of people,
+                you will only apply this course in your life of you feel the cost.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>HOW LONG WILL IT TAKE BEFORE I SEE RESULTS?</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                During 3 months you will have access to 1 new ebook with simple and easy principles every 15 days.
+                You will have to apply each of these principles for at least 30 days because it takes 30 days to influence and change your subconscience.
+                The first 15 days : you only concentrate on the first simple tasks The next 15 days : you keep applying the first tasks but you add a 2nd set of simple tasks,
+                The following 15 days the very first tasks have become a ‘habit or belief’ but you keep applying all of them,aso…..The first month you may experience some difficulties, because you have to DO something new.
+                From the second month it all becomes as easy as drinking water,because all the principles are inter-related,and reinforce eachother for ever stronger results aso …….
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Depending on
+                <ol>
+                    <li>
+                        your personal level of awareness and consciousness ,
+                    </li>
+                    <li>
+                        your willingness to apply our simple instructions
+                    </li>
+                    <li>
+                        your discipline to keep doing so every day
+                    </li>
+                </ol>
+                you will feel stronger and more confident after the 1st month.
+                But experiencing  the abundance will probably take 4-5 months,
+                because you  have to change your wrong and rusted beliefs.
+                If you don’t want to do this <u>homework for 15-30 minutes/day</u>
+                during 4 months : FORGET IT
+                because this course is NOT about KNOWING, but about DOING !!!!!!!
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>TEST IT FIRST</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                We advize you to First only pay EBOOK 1 Although you will not have enough information and not enough training to go after big goals. I advize you a <strong>small goal</strong> to start with
+                and if you do well the little daily homework you will probably be pleasantly surprised with the result and pay your next lesson with a big smile.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>WHAT  IS  MY  RISK  ?</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                There are only 2 risks :
+                <strong>The biggest risk</strong> is the ‘reptilian brain’ in your subconscience
+                This little devil will use all the tricks in the book to keep you as you are,
+                because it hates change.
+                <ul>
+                    <li>
+                        Example  : Each new principle is simple, maybe too simple.
+                        So simple that your ‘ego’,  your internal ‘devil’,  will tell you :
+                        This is ridiculous, you can as well ‘not’ do it every day
+                    </li>
+                    <li>
+                        Example  : Your little devil always uses your own voice.
+                        When you hear yourself talking, it is never your higher self,
+                        but your lower self, your reptilian brain.
+                        (your higher self mostly speaks to you via ‘feelings’)
+                    </li>
+                </ul>
+                How many times do you (your ego) say to yourself :  ‘i already know ’
+                But there is a HUGE DIFFERENCE between ‘knowing it’ and  ‘KNOWING IT’
+                We will tell you exactly how to REALLY KNOW something.
+                This ‘365PLUS’ abundance project starts with  REALLY KNOWING.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <u>The other risk</u> is that you will not apply completely all the lessons
+                and excercises that we propose, for whatever reasons.
+                If you really want peace, joy, liberty and abundance
+                you may, just like many others, spend 5 to 10 years of your time
+                and many thousands of dollars to guru’s, courses and books,
+                and years later, you might remember this basic wonder-course you once bought,
+                apply it completely, and finally enjoy it all.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <strong>
+                    If you really want to see abundance in your life,don’t forget that YOU ARE, so to speak,  THE CAPTAIN  of a huge  OIL TANKER. With only 1 small steering wheel and some buttons YOU are in complete control.
+                    If you really want to see abundance in your life, don’t forget that YOU ARE, so to speak, THE CAPTAIN  of a huge  OIL TANKER.
+                    With only 1 small steering wheel and some buttons YOU are in complete control.The enormously powerful engines of your tanker OBEY YOUR ORDERS.You only have to EXPRESS YOUR ORDERS and STAY IN CONTROL EVERY MINUTE that you are in the captains seat, at your steering wheel.
+                </strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Even if you have a wishy-woshy character, these 4 months will make you stronger,normally strong enough to carry the weight of the abundance you desire.The universe will test you during these 4 months, and will ‘absolutely+only’ give you the amount of abundance that you can carry.THIS IS YOUR ONLY POSSIBILITY TO LEAVE ALL YOUR PROBLEMS BEHIND! TAKE IT WITH BOTH HANDS !!!
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>WHY PAY FOR THIS INFORMATION ?</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                &nbsp&nbsp Because my solution to your problem is <strong>supervaluable</strong> and at a <strong>ridiculous low price</strong>
+                <ul>
+                    <li>
+                        Step by step, I TELL YOU EXACTLY HOW to get control and mastery over your life.
+                    </li>
+                    <li>
+                        More important : i tell you how to get to the SOURCE of prosperity and  abundance in every area of your life.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>YOUR PRICE SEEMS HIGH </strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Your EGO(mentioned later in the course) tells you that,because it does not want you to change.
+                BUT THE PRICE OF THE COURSEIS PROBABLY TOO LOW
+                <ol>
+                    <li>
+                        For the supreme quality you get
+                    </li>
+                    <li>
+                        Later, prices will keep rising
+                    </li>
+                </ol>
+                because, if you are like 99 % of people,you will only apply this course in your life of you feel the cost.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 title">
+                <strong>WHY SUBSCRIBE NOW ?</strong>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Because you know our website, you can subscribe later as well,but note that our prices will get higher, practically every month
+                + it will be more difficult to find free email addresses.
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                Think for ONLY 5 DAYS,because It takes ONLY 4 MONTHS of dedicated concentration  at +- 30 minutes a day. There are ONLY 3 HABITS to improve : your THOUGHTS, your WORDS and your ACTIONS You have ONLY 2 OPTIONS : The SAME PROBLEMS for the rest of your life or ABUNDANCE And for now ONLY 1 WISE DECISION to
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12 text-center">
+                <font class="title">CLICK  HERE NOW</font>, to freely read the SUBSCRIPTION + PAYMENT-PAGE
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Clients";
+}
+
+<div class="body-container" ng-controller="ClientsController" id="Clients">
+
+    <div class="table-div">
+        <table id="clientsTable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+
+    <div kendo-window="winClient" k-title="'Subscription'" id="addclient" k-width="440" k-visible="false" k-resizable="true" k-modal="true">
+
+        <form kendo-validator="validator">
+            <div class="row form-group">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                    <th>Books</th>
+                    <th>Amount Paid</th>
+                    <th>Status</th>
+                    </thead>
+
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[0]" />Book 1</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[0]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Status"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[0]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[1]" />Book 2</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[1]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Status"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[1]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[2]" />Book 3</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[2]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Status"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[2]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[3]" />Book 4</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[3]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Status"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[3]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[4]" />Book 5</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[4]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Book"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[4]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label type="text" class="form-group" ng-model="Title[5]" />Book 6</td>
+                        <td>
+                            <div style="width:100%;">
+                                <input type="text" class="form-group" ng-model="Status[5]" required validationMessage="*" />
+                                <span class="k-invalid-msg" data-for="Status"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" ng-model="IsActive[5]">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <kendo-button type="submit" class="k-primary" ng-click="saveSubscriptionData($event)">Save</kendo-button>
+                    <kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/ClientsController.js"></script>
+}

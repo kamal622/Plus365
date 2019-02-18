@@ -1,0 +1,79 @@
+﻿@{
+	ViewBag.Title = "Invite";
+}
+
+<div ng-controller="IniteController">
+	<div class="body-container">
+		<div class="form-group">
+
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					<h4>Advized email content to invite your friends : ((link))</h4>
+				</div>
+
+				<div class="col-md-3"></div>
+
+				<div class="col-md-6" style="margin-top: 25px; background-color: #dde7ff; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">
+					<div class="col-md-12 ">
+
+						@*<button onclick="myFunction()">Copy text</button>*@
+						<a href="" id="Button" ng-click="test($event)">
+							<img src="/Images/ic_copy.png" align="right" style="height:50px; width:50px; margin-left:800px;" />
+						</a>
+
+					</div>
+					<div id="myInput">
+						<div class="row form-group">
+							<div class="col-md-12">
+								Dear …..(First name)
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 ">
+								I received an email about a ‘4 month course about abundance in your life’,
+								how exactly to realize your desired HIGHER INCOME, or your actual HEARTS DESIRE,
+								or all desires you can imagine,
+								and i thought that maybe you are also interested.
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 ">
+								Simply open <a href='http://www.noknoknoknok.com'>www.noknoknoknok.com</a> with
+								<br />
+								<ul>
+									<li>
+										Username :  your own email address (on which you received this email)
+									</li>
+									<li>
+										Password :    …………((mention here the friendslist password of the inviting person))
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 ">
+								Reading this takes only 5 minutes, but applying it will absolutely change your life completely for the better.
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 ">
+								If you don’t participate now, you can always enter later with these codes, at the conditions, valid then.
+								<br />
+								Success
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-3"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+@section scripts {
+	<script type="text/javascript" src="~/js/InviteController.js"></script>
+}
+

@@ -1,0 +1,106 @@
+﻿@{
+	ViewBag.Title = "HtmlPages";
+}
+
+
+<div class="body-container" ng-controller="HtmlPagesController" id="HtmlPages">
+
+	<div class="header-div">
+		@*<kendo-button class="k-primary" ng-click="onAddHtmlPageClick()">Add Html Page</kendo-button>*@
+		<select name="LanguageId" kendo-drop-down-list k-ng-model="HtmlObj.LanguageId"
+				k-data-text-field="'Name'"
+				k-value-primitive="true"
+				k-on-change="OnChangeLanguage(kendoEvent)"
+				k-data-value-field="'Id'"
+				required validationMessage="*"
+				k-option-label="'Select Language'"
+				k-data-source="Languagedata"></select>
+	</div>
+
+	<div class="table-div" ng-show="HtmlObj.LanguageId">
+		<table id="HtmlPagesTable" class="ui celled table" cellspacing="0" width="100%"></table>
+	</div>
+
+	@*<div class="row">
+			<div class="col-md-12">
+				<kendo-button class="k-primary" ng-click="onAddHtmlPageClick()">Add Html Page</kendo-button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table id="HtmlPagesTable" class="ui celled table" cellspacing="0" width="100%"></table>
+			</div>
+		</div>*@
+
+	<div kendo-window="winHtmlPages" k-title="'Add Html Page'" k-width="1000" k-resizable="false" k-visible="false" k-modal="true">
+
+		<form kendo-validator="validator" autocomplete="off">
+
+			@*<div class="row form-group">
+				<div class="col-md-2">
+					<label for="Name">Page</label>
+				</div>
+				<div class="col-md-7">
+					<select name="Name" kendo-drop-down-list k-ng-model="Name"
+							k-data-text-field="'Name'"
+							k-value-primitive="true"
+							class="kendodropdown"
+							style="width:100%;"
+							k-data-value-field="'Id'"
+							required validationMessage="Select Page"
+							k-option-label="'Select Page'"
+							k-data-source="HtmlPageDataSource"></select>
+					<span class="k-invalid-msg" data-for="Page"></span>
+				</div>
+			</div>*@
+
+
+			@*<div class="row form-group">
+				<div class="col-md-2">
+					<label for="Path">Path</label>
+				</div>
+				<div class="col-md-7">
+					<select name="Path" kendo-drop-down-list k-ng-model="Path"
+							k-data-text-field="'Path'"
+							k-value-primitive="true"
+							class="kendodropdown"
+							style="width:100%;"
+							k-data-value-field="'Id'"
+							required validationMessage="Select Path"
+							k-option-label="'Select Html Path'"
+							k-data-source="HtmlPathDataSource"></select>
+					<span class="k-invalid-msg" data-for="Path"></span>
+				</div>
+			</div>*@
+
+			<div class="row form-group">
+				<div class="col-md-12" style="width: 965px;">
+					<label for="HTMLContent">Content</label>
+					<textarea name="editor1" id="editor1" rows="10" cols="80">
+							 This is my textarea to be replaced with CKEditor.
+					</textarea>
+				</div>
+				@*<div class="col-md-7">
+					<textarea type="text" name="HTMLContent" class="k-textarea" rows="3" ng-model="HtmlObj.HTMLContent" style="width:100%"
+							  required validationMessage="Enter HTML Content" placeholder="HTML Content"></textarea>
+					<span class="k-invalid-msg" data-for="HTMLContent"></span>
+				</div>*@
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-8">
+					<kendo-button type="submit" class="k-primary" ng-click="SaveHtmlPageData($event)">Save</kendo-button>
+					<kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+@section scripts {
+	<script type="text/javascript" src="~/js/HtmlPagesController.js"></script>
+	<script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+	<script src="~/Scripts/ckeditor/config.js" type="text/javascript"></script>
+	<script type="text/javascript"></script>
+}

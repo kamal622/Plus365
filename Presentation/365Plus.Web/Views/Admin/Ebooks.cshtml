@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Ebooks";
+}
+
+<div class="body-container" ng-controller="EbooksController" id="Ebooks">
+    <div class="table-div">
+        <table id="ebooksTable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+    <div kendo-window="winEbooks" k-title="'Add Ebook'" id="addEbooks" k-width="440" k-visible="false" k-resizable="false" k-modal="true">
+
+        <form kendo-validator="validator" autocomplete="off">
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label for="Title">Ebooks</label>
+                </div>
+                <div class="col-md-5">
+                    <input name="Title" ng-model="EbookObj.Title" placeholder="Title" class="k-textbox" style="width:100%;" required validationMessage="Enter book Title" disabled/>
+                    <span class="k-invalid-msg" data-for="Title"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label for="Price">Price</label>
+                </div>
+                <div class="col-md-5">
+                    <input name="Price" ng-model="EbookObj.Price" placeholder="Price" class="k-textbox" style="width:100%;" required validationMessage="Enter Price" />
+                    <span class="k-invalid-msg" data-for="Price"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <kendo-button type="submit" class="k-primary" ng-click="saveEbookData($event)">Save</kendo-button>
+                    <kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/EbooksController.js"></script>
+}

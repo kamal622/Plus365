@@ -1,0 +1,116 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Data.Models;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.Clients
+{
+    public class ClientService
+    {
+        private readonly IRepository<Data.Models.UserProfile> _userProfileRepository;
+        private readonly IRepository<Data.Models.Role> _roleRepository;
+
+        private readonly IRepository<Data.Models.User> _userRepository;
+
+        public ClientService(IRepository<Data.Models.UserProfile> userProfileRepository, IRepository<Data.Models.Role> roleRepository, IRepository<Data.Models.User> userRepository)
+        {
+            this._userProfileRepository = userProfileRepository;
+            this._roleRepository = roleRepository;
+            this._userRepository = userRepository;
+        }
+
+
+        public List<ClientsModel> GetAll()
+        {
+            var data = from a in this._userRepository.Table
+                       where a.Roles.Any(r => r.Name == "Client")
+                       select new ClientsModel
+                       {
+                           Id = a.Id,
+                           FirstName = a.UserProfile.FirstName,
+                           LastName = a.UserProfile.LastName,
+                           UserName = a.UserName,
+                           PersonalEmail = a.UserProfile.PersonalEmail,
+                           MobileNo = a.UserProfile.MobileNo,
+                           DateOfBirth = a.UserProfile.DateOfBirth,
+                           UserCode = a.UserProfile.UserCode,
+                           CountryId = a.UserProfile.CountryId,
+                           LanguageId = a.UserProfile.LanguageId,
+                           ModifiedDate = a.UserProfile.ModifiedDate,
+                           CreatedBy = a.UserProfile.CreatedBy,
+                           ModifiedBy = a.UserProfile.ModifiedBy,
+                           CreatedDate = a.UserProfile.CreatedDate,
+                       };
+            return data.ToList();
+        }
+
+        public ClientsModel GetClientByID(double id)
+        {
+            var data = from a in this._userProfileRepository.Table
+                       where a.Id == id
+                       select new ClientsModel
+                       {
+                           Id = a.Id,
+                           FirstName = a.FirstName,
+                           LastName = a.LastName,
+                           PersonalEmail = a.PersonalEmail,
+                           MobileNo = a.MobileNo,
+                           DateOfBirth = a.DateOfBirth,
+                           UserCode = a.UserCode,
+                           CountryId = a.CountryId,
+                           LanguageId = a.LanguageId,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy,
+                           CreatedDate = a.CreatedDate,
+                       };
+
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.Role AddClient(Data.Models.Role client)
+        {
+           
+            this._roleRepository.Insert(client);
+            return client;
+        }
+
+        public void UpdateClient(ClientsModel client)
+        {
+
+            var existingClient = _userProfileRepository.Table.FirstOrDefault(f => f.Id == client.Id);
+            if (existingClient != null)
+            {
+                //Update
+                existingClient.FirstName = client.FirstName;
+                existingClient.LastName = client.LastName;
+                existingClient.PersonalEmail = client.PersonalEmail;
+
+                existingClient.MobileNo = client.MobileNo;
+                existingClient.DateOfBirth = client.DateOfBirth;
+
+                existingClient.UserCode = client.UserCode;
+                existingClient.CountryId = client.CountryId;
+                existingClient.LanguageId = client.LanguageId;
+
+                existingClient.LanguageId = client.LanguageId;
+
+                existingClient.ModifiedBy = client.ModifiedBy;
+                existingClient.ModifiedDate = DateTime.UtcNow;
+                if (existingClient.CreatedBy == null)
+                {
+                    existingClient.CreatedBy = client.ModifiedBy;
+                    existingClient.CreatedDate = DateTime.UtcNow;
+
+                }
+                _userProfileRepository.Update(existingClient);
+
+            }
+
+        }
+    }
+}

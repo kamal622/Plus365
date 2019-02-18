@@ -1,0 +1,34 @@
+﻿SiteApp.controller("LessonsController", function ($scope, $http) {
+    $scope.selectedLesson = "Lesson 1";
+
+    $("#sidebar")
+        .kendoResponsivePanel({
+            breakpoint: 768,
+            orientation: "left"
+        })
+        .on("click", "a", function (e) {
+            // handle clicks of dummy items, actual links do not need this
+            alert($(e.target).text() + " clicked");
+            $("#sidebar").kendoResponsivePanel("close");
+        });
+
+    $scope.treeData = new kendo.data.HierarchicalDataSource({
+        data: [
+            { text: "Lesson 1" },
+            { text: "Lesson 2" },
+            { text: "Lesson 3" },
+            { text: "Lesson 4" },
+            { text: "Lesson 5" },
+            { text: "Lesson 6" },
+            { text: "Lesson 7" },
+            { text: "Lesson 8" },
+        ]
+    });
+    $scope.orientation = "horizontal";
+    //$scope.selectedItem = null;
+
+    $scope.onChangeLesson = function (e) {
+        debugger;
+    }
+});
+

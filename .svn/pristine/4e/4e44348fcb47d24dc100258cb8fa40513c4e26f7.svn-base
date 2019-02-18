@@ -1,0 +1,134 @@
+﻿SiteApp.controller("ClientsController", function ($scope, $http) {
+    
+    //$scope.ClientObj = { Id: 0, Title: "", Status: "", IsActive: 0 };
+    //$scope.Title = [];
+    //$scope.Status = [];
+    //$scope.IsActive = [];
+    $scope.userSubscriptionList = [];
+
+
+    function refreshClientsGridData() {
+       /// debugger;
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetAllClients",
+            success: function (data) {
+                //debugger;
+                ClientsGrid.clear();
+                ClientsGrid.rows.add(data).draw();
+            },
+            error: function (jqXHR, exception) {
+                //debugger; 
+            }
+        });
+    }
+
+    var ClientsGrid = $('#clientsTable').DataTable({
+        "data": [],
+        "paging": false,
+        "bSort": false,
+        "bInfo": false,
+        "columnDefs": [
+            {
+                "targets":7,
+                "data": null,
+                //"width": "170px",
+                "defaultContent":
+                    '<button class="k-primary k-button subscribe" ng-click="onAddCountryClick()">Subscription</button>'
+            }
+        ],
+        "columns":
+            [
+                { title: "First Name", "data": "FirstName", "width": "118px" },
+                { title: "Email", "data": "PersonalEmail", "width": "120px" },
+                { title: "User Name", "data": "UserName", "width": "118px" },
+                { title: "Email", "data": "PersonalEmail", "width": "120px" },
+                { title: "Country", "data": "CountryName", "width": "120px" },
+                { title: "Language", "data": "LanguageName", "width": "118px" },
+                { title: "Referral Code", "data": "ReferralCode", "width": "118px" },
+                { title: "", "data": "", "width": "10px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar Clients">frtip'
+    });
+
+    refreshClientsGridData();
+
+
+    //create getstaus 
+    ClientsGrid.on('click', 'button.subscribe', function () {
+        var data = ClientsGrid.row($(this).parents('tr')).data();
+        debugger;
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetSubscriptionStatus",
+            data: { userId: data.Id },
+            success: function (data) {
+                $scope.winClient.center().open();
+                debugger;
+                $scope.$apply(function () {
+                    $scope.userSubscriptionList = data;
+                });
+            },
+            error: function (jqXHR, exception) {
+                debugger;
+            }
+        });
+    });
+
+    $scope.onCancel = function () {
+       clearForm();
+        $scope.winClient.close();
+    }
+
+    $scope.saveSubscriptionData = function (event) {
+
+        event.preventDefault();
+
+        if ($scope.validator.validate()) {
+            var url = "/Subscription/UserSubscription";
+           
+           
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: url,
+                data: { Clients: $scope.ClientObj },
+                success: function (response) {
+                    clearForm();
+                    $scope.winClient.close();
+                    refreshClientsGridData();
+                },
+                error: function (jqXHR, exception) {
+
+                    alert("error");
+                }
+            });
+        }
+    }
+
+    function clearForm() {
+        $scope.ClientObj = { Id: 0, Title: "", Status: "", IsActive: 0 };
+    }
+
+    $scope.personalInfoForm = [];
+    $scope.submitForm = function () {
+        $scope.personalInfoForm.push({
+            'FirstName': $scope.fName,
+            'LastName': $scope.lName,
+            'Age': $scope.age,
+            'HighestQualification': $scope.hQualification,
+            'InstituteName': $scope.instituteName
+        });
+        $scope.fName = '';
+        $scope.lName = '';
+        $scope.age = '';
+        $scope.hQualification = '';
+        $scope.instituteName = '';
+    };
+   
+
+});

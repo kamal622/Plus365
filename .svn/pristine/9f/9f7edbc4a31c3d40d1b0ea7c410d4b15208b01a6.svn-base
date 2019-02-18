@@ -1,0 +1,123 @@
+﻿using _365Plus.Core.Caching;
+using _365Plus.Core.Configuration;
+using _365Plus.Core.Data;
+using _365Plus.Core.Fakes;
+using _365Plus.Core.Infrastructure;
+using _365Plus.Core.Infrastructure.DependencyManagement;
+using _365Plus.Data;
+using _365Plus.Service.Assistant;
+using _365Plus.Service.Clients;
+using _365Plus.Service.Configuration;
+using _365Plus.Service.Country;
+using _365Plus.Service.Ebooks;
+using _365Plus.Service.EmailTemplate;
+using _365Plus.Service.HtmlPages;
+using _365Plus.Service.Languages;
+using _365Plus.Service.User;
+using Autofac;
+using Autofac.Builder;
+using Autofac.Core;
+using Autofac.Integration.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+
+namespace _365Plus.Web.Framework
+{
+    public class DependencyRegistrar : IDependencyRegistrar
+    {
+        public int Order
+        {
+            get { return 0; }
+        }
+
+        public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder, PlusConfig config)
+        {
+            //HTTP context and other related stuff
+            builder.Register(c =>
+                //register FakeHttpContext when HttpContext is not available
+                HttpContext.Current != null ?
+                (new HttpContextWrapper(HttpContext.Current) as HttpContextBase) :
+                (new FakeHttpContext("~/") as HttpContextBase))
+                .As<HttpContextBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Request)
+                .As<HttpRequestBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Response)
+                .As<HttpResponseBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Server)
+                .As<HttpServerUtilityBase>()
+                .InstancePerLifetimeScope();
+            builder.Register(c => c.Resolve<HttpContextBase>().Session)
+                .As<HttpSessionStateBase>()
+                .InstancePerLifetimeScope();
+
+            //controllers
+            builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
+
+            //cache managers
+            builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("Plus_cache_static").SingleInstance();
+
+            //use static cache (between HTTP requests)
+            builder.RegisterType<SettingService>().As<ISettingService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("nop_cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterSource(new SettingsSource());
+
+            builder.Register<IDbContext>(c => new Plus365Context()).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+
+            builder.RegisterType<UserService>().InstancePerRequest();
+            builder.RegisterType<AssistantService>().InstancePerRequest();
+            builder.RegisterType<LanguageService>().InstancePerRequest();
+            builder.RegisterType<CountryService>().InstancePerRequest();
+            builder.RegisterType<EmailTemplateService>().InstancePerRequest();
+            builder.RegisterType<ClientService>().InstancePerRequest();
+            builder.RegisterType<HtmlPageService>().InstancePerRequest();
+            builder.RegisterType<EbookService>().InstancePerRequest();
+        }
+    }
+
+    public class SettingsSource : IRegistrationSource
+    {
+        static readonly MethodInfo BuildMethod = typeof(SettingsSource).GetMethod(
+            "BuildRegistration",
+            BindingFlags.Static | BindingFlags.NonPublic);
+
+        public IEnumerable<IComponentRegistration> RegistrationsFor(
+                Autofac.Core.Service service,
+                Func<Autofac.Core.Service, IEnumerable<IComponentRegistration>> registrations)
+        {
+            var ts = service as TypedService;
+            if (ts != null && typeof(ISettings).IsAssignableFrom(ts.ServiceType))
+            {
+                var buildMethod = BuildMethod.MakeGenericMethod(ts.ServiceType);
+                yield return (IComponentRegistration)buildMethod.Invoke(null, null);
+            }
+        }
+
+        static IComponentRegistration BuildRegistration<TSettings>() where TSettings : ISettings, new()
+        {
+            return RegistrationBuilder
+                .ForDelegate((c, p) =>
+                {
+                    //var currentStoreId = c.Resolve<IStoreContext>().CurrentStore.Id;
+                    //uncomment the code below if you want load settings per store only when you have two stores installed.
+                    //var currentStoreId = c.Resolve<IStoreService>().GetAllStores().Count > 1
+                    //    c.Resolve<IStoreContext>().CurrentStore.Id : 0;
+
+                    //although it's better to connect to your database and execute the following SQL:
+                    //DELETE FROM [Setting] WHERE [StoreId] > 0
+                    return c.Resolve<ISettingService>().LoadSetting<TSettings>();
+                })
+                .InstancePerLifetimeScope()
+                .CreateRegistration();
+        }
+
+        public bool IsAdapterForIndividualComponents { get { return false; } }
+    }
+}

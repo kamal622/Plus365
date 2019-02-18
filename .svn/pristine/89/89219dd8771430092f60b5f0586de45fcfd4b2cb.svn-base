@@ -1,0 +1,78 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Service.Model;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.Country
+{
+    public class CountryService
+    {
+        private readonly IRepository<Data.Models.Country> _countryRepository;
+        private readonly IRepository<Data.Models.CountryLanguage> _countryLanguageRepository;
+        public CountryService(IRepository<Data.Models.Country> countryRepository, IRepository<Data.Models.CountryLanguage> countryLanguageRepository)
+        {
+            this._countryRepository = countryRepository;
+            this._countryLanguageRepository = countryLanguageRepository;
+        }
+
+        public List<CountryModel> GetAll()
+        {
+            var data = from a in this._countryRepository.Table
+                       select new CountryModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           DomainId = a.DomainId,
+                           IsActive = a.IsActive,
+                       };
+          
+            return data.ToList();
+        }
+
+        public CountryModel GetCountryByID(double id)
+        {
+            var data = from a in this._countryRepository.Table
+                       where a.Id == id
+                       select new CountryModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           DomainId = a.DomainId,
+                           IsActive = a.IsActive,
+                       };
+            var country = data.FirstOrDefault();
+            var countryLanguages = from a in this._countryLanguageRepository.Table
+                                   where a.CountryId== id
+                                   select new CountryLanguageModel
+                                   {
+                                       Id = a.Id,
+                                       CountryId = a.CountryId,
+                                       LanguageId = a.LanguageId,
+                                       IsDefaultLanguage = a.IsDefaultLanguage,
+                                       IsNationalLanguage = a.IsNationalLanguage
+                                   };
+            country.Languages = countryLanguages.ToList();
+            return country;
+        }
+
+        public Data.Models.Country AddCountry(Data.Models.Country country)
+        {
+            country.DomainId = 1; // TODO :change
+            this._countryRepository.Insert(country);
+             return country;
+        }
+
+        public void UpdateCountry(Data.Models.Country country)
+        {
+            var existingCountry = _countryRepository.Table.FirstOrDefault(f => f.Id == country.Id);
+
+            existingCountry.Name = country.Name; 
+            this._countryRepository.Insert(country);
+        }
+
+    }
+}

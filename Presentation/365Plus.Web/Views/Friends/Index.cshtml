@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+
+<div class="body-container" ng-controller="FriendsController" id="friends">
+  
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row form-group">
+                    <table id="friendstable" class="ui celled table" cellspacing="0" width="100%"></table>
+                </div>
+            </div>
+        </div>
+   
+</div>
+
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/FriendsController.js"></script>
+}

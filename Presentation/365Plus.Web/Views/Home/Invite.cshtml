@@ -1,0 +1,135 @@
+﻿@{
+	ViewBag.Title = "Invite";
+}
+
+<div ng-controller="IniteController">
+	<div class="body-container">
+		<div class="form-group">
+
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					<h4>Advized email content to invite your friends : ((link))</h4>
+				</div>
+
+				<div class="col-md-3"></div>
+
+				<div class="col-md-6" style="margin-top: 25px; background-color: #dde7ff; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">
+					<div class="col-md-12 ">
+						<div class="row">
+							<div class="col-lg-10"><b>Method 1: Copy link</b></div><div class="col-lg-2"><button class="js-textareacopybtn" style="vertical-align:top; background-color:transparent; border:hidden;"><img src="/Images/ic_copy.png" align="right" style="height:50px; width:50px;" /></button></div>
+						</div>
+						<div class="row">
+							<textarea class="js-copytextarea" style="background-color:transparent; border:hidden;height: 40px;width: 550px;" readonly="readonly">copy linkkk</textarea>
+						</div>
+					</div>
+					<div class="col-md-12 ">
+						<div class="row">
+							<div class="col-lg-10"><b>Method 2: Copy CodeMethod 1: Copy link</b></div><div class="col-lg-2"><button class="js-textareacopybtn2" style="vertical-align:top; background-color:transparent; border:hidden;"><img src="/Images/ic_copy.png" align="right" style="height:50px; width:50px;" /></button></div>
+						</div>
+						<div class="row">
+							<textarea class="js-copytextarea2" style="background-color:transparent; border:hidden;height: 250px;width: 550px;" readonly="readonly">
+Dear …..(First name)
+I received an email about a ‘4 month course about abundance in your life’, how exactly to realize your desired HIGHER INCOME, or your actual HEARTS DESIRE, or all desires you can imagine, and i thought that maybe you are also interested.
+Simply open www.noknoknoknok.com with 
+Username : your own email address (on which you received this email)
+Password : …………((mention here the friendslist password of the inviting person))
+Reading this takes only 5 minutes, but applying it will absolutely change your life completely for the better.
+If you don’t participate now, you can always enter later with these codes, at the conditions, valid then. 
+Success</textarea>
+						</div>
+
+						@*<button onclick="myFunction()">Copy text</button>*@
+						@*<a href="" id="Button" ng-click="test()" class="js-textareacopybtn">
+				<img src="/Images/ic_copy.png" align="right" style="height:50px; width:50px; margin-left:800px;" />
+			</a>*@
+					</div>
+
+					@*<div>
+			<div class="row form-group">
+				<div class="col-md-12">
+					Dear …..(First name)
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					I received an email about a ‘4 month course about abundance in your life’,
+					how exactly to realize your desired HIGHER INCOME, or your actual HEARTS DESIRE,
+					or all desires you can imagine,
+					and i thought that maybe you are also interested.
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					Simply open <a href='http://www.noknoknoknok.com'>www.noknoknoknok.com</a> with
+					<br />
+					<ul>
+						<li>
+							Username :  your own email address (on which you received this email)
+						</li>
+						<li>
+							Password :    …………((mention here the friendslist password of the inviting person))
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					Reading this takes only 5 minutes, but applying it will absolutely change your life completely for the better.
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12 ">
+					If you don’t participate now, you can always enter later with these codes, at the conditions, valid then.
+					<br />
+					Success
+				</div>
+			</div>
+		</div>*@
+
+				</div>
+
+				<div class="col-md-3"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+@section scripts {
+	<script type="text/javascript" src="~/js/InviteController.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+	<script>
+		var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+		copyTextareaBtn.addEventListener('click', function (event) {
+			var copyTextarea = document.querySelector('.js-copytextarea');
+			copyTextarea.focus();
+			copyTextarea.select();
+
+			try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				console.log('Copying text command was ' + msg);
+			} catch (err) {
+				console.log('Oops, unable to copy');
+			}
+		});
+
+		var copyTextareaBtn2 = document.querySelector('.js-textareacopybtn2');
+
+		copyTextareaBtn2.addEventListener('click', function (event) {
+			var copyTextarea2 = document.querySelector('.js-copytextarea2');
+			copyTextarea2.focus();
+			copyTextarea2.select();
+
+			try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				console.log('Copying text command was ' + msg);
+			} catch (err) {
+				console.log('Oops, unable to copy');
+			}
+		});
+	</script>
+}
+

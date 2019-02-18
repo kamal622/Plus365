@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Language";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<div class="row" ng-controller="LanguageController" id="language">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <kendo-button class="k-primary" ng-click="onAddLanguageClick()">Add language</kendo-button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="Language" class="ui celled table" cellspacing="0" width="100%"></table>
+            </div>
+        </div>
+    </div>
+    <div kendo-window="winLanguage" k-title="'Add Language'" k-width="326" k-height="190" k-visible="false" k-modal="true">
+        <div class="col-md-11">
+            <form kendo-validator="validator" class="form-horizontal">
+                <div class="form-group">
+                    <label for="languagename" style="width: 120px;">Language Name</label>
+                    <input name="languagename" ng-model="Languageobj.languagename" placeholder="Enter Language Name" class="k-textbox" required validationMessage="*" />
+                </div>
+                <div class="form-group">
+                    <label for="languagecode" style="width: 120px;">Language Code</label>
+                    <input name="languagecode" class="k-textbox" ng-model="Languageobj.languagecode" required validationMessage="*" placeholder="Enter Language code" />
+                </div>
+                <div class="form-group">
+                    <label for="languageculture" style="width: 120px;">Language Culture</label>
+                    <input name="languageculture" class="k-textbox" ng-model="Languageobj.languageculture" required validationMessage="*" placeholder="Enter Language Culture" />
+                </div>
+            </form>
+        </div>
+        <kendo-button class="k-primary" ng-click="saveLanguageData($event)">Save</kendo-button>
+        <kendo-button ng-click="onCancel()">Cancel</kendo-button>
+    </div>
+    
+</div>
+
+<style>
+    .glyphicon {
+        font-size: x-small;
+    }
+
+    input.k-invalid {
+        border: 1px solid red !important;
+    }
+    /*hide validation message*/
+    .k-tooltip-validation {
+        /*visibility: hidden;*/
+        /*or*/
+        display: none !important;
+    }
+</style>
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/LanguageController.js"></script>
+}
+

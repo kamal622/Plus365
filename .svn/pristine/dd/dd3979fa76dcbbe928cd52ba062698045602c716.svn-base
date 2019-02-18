@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="SiteApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/datatable")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+
+
+        body {
+            background: url(/Images/indexbg.jpg) center center no-repeat fixed;
+            padding-top:10px;
+            /*-webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;*/
+        }
+    </style>
+</head>
+
+<body ng-controller="BaseController">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @*<div class="body-content">*@
+        @RenderBody()
+
+    </div>
+
+    @*<footer>
+            <p>&copy; @DateTime.Now.Year - 365Plus</p>
+        </footer>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/datatable")
+    <script type="text/javascript" src="~/js/BaseController.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

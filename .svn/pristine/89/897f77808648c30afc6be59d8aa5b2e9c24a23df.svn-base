@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Advisor";
+}
+
+
+
+<div class="row" ng-controller="AdvisorController" id="Advisor">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <kendo-button class="k-primary" ng-click="onAddAdvisorClick()">Add Advisor</kendo-button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="advisor" class="ui celled table" cellspacing="0" width="100%"></table>
+            </div>
+        </div>
+    </div>
+    <div kendo-window="winAdvisor" k-title="'Add Advisor'" k-width="335" k-height="415" k-visible="false" k-modal="true">
+        <div class="col-md-11">
+            <form kendo-validator="validator" class="form-horizontal">
+                <div class="form-group">
+                    <label for="FirstName" style="width: 120px;">First Name</label>
+                    <input name="FirstName" ng-model="AdvisorObj.FirstName" placeholder="Enter first name" class="k-textbox" required validationMessage="*" />
+                </div>
+                <div class="form-group">
+                    <label for="LastName" style="width: 120px;">Last Name</label>
+                    <input name="LastName" class="k-textbox" ng-model="AdvisorObj.LastName" required validationMessage="*" placeholder="Enter Last Name" />
+                </div>
+                <div class="form-group">
+                    <label for="PersonalEmail" style="width: 120px;">PersonalEmail</label>
+                    <input name="PersonalEmail" ng-model="AdvisorObj.PersonalEmail" placeholder="Enter PersonalEmail" class="k-textbox" required validationMessage="*" />
+                </div>
+                <div class="form-group">
+                    <label for="MobileNo" style="width: 120px;">Contact Number</label>
+                    <input name="MobileNo" class="k-textbox" ng-model="AdvisorObj.MobileNo" required validationMessage="*" placeholder="Enter Contact no" />
+                </div>
+                <div class="form-group">
+                    <label for="username" style="width: 120px;">User Name</label>
+                    <input name="username" ng-model="AdvisorObj.username" placeholder="Enter User Name" class="k-textbox" required validationMessage="*" />
+                </div>
+                <div class="form-group">
+                    <label for="Password" style="width: 120px;">Password</label>
+                    <input name="Password" type="password" class="k-textbox" ng-model="AdvisorObj.Password" required validationMessage="*" placeholder="Enter Password" />
+                </div>
+                <div class="form-group">
+                    <label for="Country" style="width: 120px;">Country</label>
+                    <select name="CountryId" kendo-drop-down-list k-ng-model="AdvisorObj.CountryId"
+                            k-data-text-field="'Name'"
+                            k-data-value-field="'Id'"
+                            required validationMessage="*"
+                            k-value-primitive="true"
+                            k-option-label="'Select Country'"
+                            k-data-source="Countrydata"></select>
+                    <span class="k-invalid-msg" data-for="CountryId"></span>
+                </div>
+                <div class="form-group">
+                    <label for="LanguageId" style="width: 120px;">Languages</label>
+                    <select name="LanguageId" kendo-drop-down-list k-ng-model="AdvisorObj.LanguageId"
+                            k-data-text-field="'Name'"
+                            k-value-primitive="true"
+                            k-data-value-field="'Id'"
+                            required validationMessage="*"
+                            k-option-label="'Select Language'"
+                            k-data-source="Languagedata"></select>
+                    <span class="k-invalid-msg" data-for="LanguageId"></span>
+                </div>
+            </form>
+        </div>
+        <kendo-button class="k-primary" ng-click="saveAdvisorData($event)">Save</kendo-button>
+        <kendo-button ng-click="onCancel()">Cancel</kendo-button>
+    </div>
+</div>
+
+<style>
+    .glyphicon {
+        font-size: x-small;
+    }
+
+    input.k-invalid {
+        border: 1px solid red !important;
+    }
+
+    .k-dropdown.k-invalid {
+        border: 1px solid red !important;
+    }
+    /*hide validation message*/
+    .k-tooltip-validation {
+        /*visibility: hidden;*/
+        /*or*/
+        display: none !important;
+    }
+</style>
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/AdvisorController.js"></script>
+}
+
+
+

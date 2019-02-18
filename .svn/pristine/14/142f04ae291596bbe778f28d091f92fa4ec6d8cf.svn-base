@@ -1,0 +1,126 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Data.Models;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.Clients
+{
+    public class ClientService
+    {
+        private readonly IRepository<Data.Models.UserProfile> _userProfileRepository;
+        private readonly IRepository<Data.Models.Role> _roleRepository;
+        private readonly IRepository<Data.Models.Language> _languageRepository;
+        private readonly IRepository<Data.Models.Country> _countryRepository;
+
+        private readonly IRepository<Data.Models.User> _userRepository;
+
+        public ClientService(IRepository<Data.Models.UserProfile> userProfileRepository, IRepository<Data.Models.Role> roleRepository, IRepository<Data.Models.User> userRepository,
+            IRepository<Data.Models.Language> languageRepository, IRepository<Data.Models.Country> countryRepository)
+        {
+            this._userProfileRepository = userProfileRepository;
+            this._roleRepository = roleRepository;
+            this._userRepository = userRepository;
+            this._languageRepository = languageRepository;
+            this._countryRepository = countryRepository;
+        }
+
+
+        public List<ClientsModel> GetAll()
+        {
+
+            var data = from user in this._userRepository.Table
+                       join lang in this._languageRepository.Table on user.UserProfile.LanguageId equals lang.Id
+                       join cntry in this._countryRepository.Table on user.UserProfile.CountryId equals cntry.Id
+                       where user.Roles.Any(r => r.Name == "Prospect" || r.Name== "Client")
+                       select new ClientsModel
+                       {
+                           Id = user.Id,
+                           FirstName = user.UserProfile.FirstName,
+                           LastName = user.UserProfile.LastName,
+                           UserName = user.UserName,
+                           PersonalEmail = user.UserProfile.PersonalEmail,
+                           MobileNo = user.UserProfile.MobileNo,
+                           DateOfBirth = user.UserProfile.DateOfBirth,
+                           UserCode = user.UserProfile.UserCode,
+                           CountryId = user.UserProfile.CountryId,
+                           CountryName=cntry.Name,
+                           LanguageId = user.UserProfile.LanguageId,
+                           LanguageName=lang.Name,
+                           ModifiedDate = user.UserProfile.ModifiedDate,
+                           CreatedBy = user.UserProfile.CreatedBy,
+                           ModifiedBy = user.UserProfile.ModifiedBy,
+                           CreatedDate = user.UserProfile.CreatedDate
+                       };
+           
+            return data.ToList();
+        }
+
+        public ClientsModel GetClientByID(double id)
+        {
+            var data = from a in this._userProfileRepository.Table
+                       where a.Id == id
+                       select new ClientsModel
+                       {
+                           Id = a.Id,
+                           FirstName = a.FirstName,
+                           LastName = a.LastName,
+                           PersonalEmail = a.PersonalEmail,
+                           MobileNo = a.MobileNo,
+                           DateOfBirth = a.DateOfBirth,
+                           UserCode = a.UserCode,
+                           CountryId = a.CountryId,
+                           LanguageId = a.LanguageId,
+                           ModifiedDate = a.ModifiedDate,
+                           CreatedBy = a.CreatedBy,
+                           ModifiedBy = a.ModifiedBy,
+                           CreatedDate = a.CreatedDate,
+                       };
+
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.Role AddClient(Data.Models.Role client)
+        {
+           
+            this._roleRepository.Insert(client);
+            return client;
+        }
+
+        public void UpdateClient(ClientsModel client)
+        {
+
+            var existingClient = _userProfileRepository.Table.FirstOrDefault(f => f.Id == client.Id);
+            if (existingClient != null)
+            {
+                //Update
+                existingClient.FirstName = client.FirstName;
+                existingClient.LastName = client.LastName;
+                existingClient.PersonalEmail = client.PersonalEmail;
+
+                existingClient.MobileNo = client.MobileNo;
+                existingClient.DateOfBirth = client.DateOfBirth;
+
+                existingClient.UserCode = client.UserCode;
+                existingClient.CountryId = client.CountryId;
+                existingClient.LanguageId = client.LanguageId;
+
+
+                existingClient.ModifiedBy = client.ModifiedBy;
+                existingClient.ModifiedDate = DateTime.UtcNow;
+                if (existingClient.CreatedBy == null)
+                {
+                    existingClient.CreatedBy = client.ModifiedBy;
+                    existingClient.CreatedDate = DateTime.UtcNow;
+
+                }
+                _userProfileRepository.Update(existingClient);
+
+            }
+
+        }
+    }
+}

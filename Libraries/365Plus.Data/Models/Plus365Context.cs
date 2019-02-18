@@ -1,0 +1,66 @@
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using _365Plus.Data.Models.Mapping;
+
+namespace _365Plus.Data.Models
+{
+    public abstract class Plus365Context : DbContext
+    {
+        static Plus365Context()
+        {
+            Database.SetInitializer<Plus365Context>(null);
+        }
+
+        public Plus365Context(string connectionStringName)
+            : base(connectionStringName)
+        {
+        }
+
+        public DbSet<Code> Codes { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<CountryLanguage> CountryLanguages { get; set; }
+        public DbSet<DomainDetail> DomainDetails { get; set; }
+        public DbSet<Ebook> Ebooks { get; set; }
+        public DbSet<EmailTemplate> EmailTemplates { get; set; }
+        public DbSet<EmailTemplateType> EmailTemplateTypes { get; set; }
+        public DbSet<HTMLPage> HTMLPages { get; set; }
+        public DbSet<HTMLPageContent> HTMLPageContents { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Localization> Localizations { get; set; }
+        public DbSet<Localizations_Backup> Localizations_Backup { get; set; }
+        public DbSet<RoleProfile> RoleProfiles { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<UserClaim> UserClaims { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserSubscriptionStatu> UserSubscriptionStatus { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CodeMap());
+            modelBuilder.Configurations.Add(new CountryMap());
+            modelBuilder.Configurations.Add(new CountryLanguageMap());
+            modelBuilder.Configurations.Add(new DomainDetailMap());
+            modelBuilder.Configurations.Add(new EbookMap());
+            modelBuilder.Configurations.Add(new EmailTemplateMap());
+            modelBuilder.Configurations.Add(new EmailTemplateTypeMap());
+            modelBuilder.Configurations.Add(new HTMLPageMap());
+            modelBuilder.Configurations.Add(new HTMLPageContentMap());
+            modelBuilder.Configurations.Add(new LanguageMap());
+            modelBuilder.Configurations.Add(new LocalizationMap());
+            modelBuilder.Configurations.Add(new Localizations_BackupMap());
+            modelBuilder.Configurations.Add(new RoleProfileMap());
+            modelBuilder.Configurations.Add(new RoleMap());
+            modelBuilder.Configurations.Add(new SettingMap());
+            modelBuilder.Configurations.Add(new sysdiagramMap());
+            modelBuilder.Configurations.Add(new UserClaimMap());
+            modelBuilder.Configurations.Add(new UserLoginMap());
+            modelBuilder.Configurations.Add(new UserProfileMap());
+            modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new UserSubscriptionStatuMap());
+        }
+    }
+}

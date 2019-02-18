@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59910B23-835B-4118-8632-E78247063FB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_365Plus.Service</RootNamespace>
+    <AssemblyName>365Plus.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assistant\AssistantService.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Clients\ClientService.cs" />
+    <Compile Include="Configuration\ISettingService.cs" />
+    <Compile Include="Configuration\SettingExtensions.cs" />
+    <Compile Include="Configuration\SettingService.cs" />
+    <Compile Include="Country\CountryService.cs" />
+    <Compile Include="Ebooks\EbookService.cs" />
+    <Compile Include="EmailTemplate\EmailTemplateService.cs" />
+    <Compile Include="HtmlPages\HtmlPageService.cs" />
+    <Compile Include="Languages\LanguageService.cs" />
+    <Compile Include="Model\AssistantModel.cs" />
+    <Compile Include="Model\ClientsModel.cs" />
+    <Compile Include="Model\CountryModel.cs" />
+    <Compile Include="Model\EbookModel.cs" />
+    <Compile Include="Model\EmailTemplateModel.cs" />
+    <Compile Include="Model\HtmlPagesModel.cs" />
+    <Compile Include="Model\LanguageModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\365Plus.Core\365Plus.Core.csproj">
+      <Project>{0de5fa00-d4e9-493a-aacd-86f0f21e83e5}</Project>
+      <Name>365Plus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\365Plus.Data\365Plus.Data.csproj">
+      <Project>{3be2c6a6-1bf4-4a50-9e0b-4de7c0090e8c}</Project>
+      <Name>365Plus.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_365Plus\Data\Models\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

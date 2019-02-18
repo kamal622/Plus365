@@ -1,0 +1,176 @@
+﻿SiteApp.controller("HtmlPagesController", function ($scope, $http) {
+ // alert(' html');
+
+	// Replace the <textarea id="editor1"> with a CKEditor
+	// instance, using default configuration.
+	var ckEditor = CKEDITOR.replace('editor1');
+	CKEDITOR.config.uiColor = '#e1f3f4';
+
+	// Set Data...
+	ckEditor.setData("");
+
+    $scope.HtmlObj = { Id: 0, Name: 0, Path:0, HTMLContent: "", LanguageId: 0};
+
+    $scope.HtmlPageDataSource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                type: "GET",
+                url: "/Admin/GetAllHtmlPages",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+            }
+        },
+        error: function (e) {
+            console.log(e.status); // displays "error"
+        }
+    });
+
+   
+
+	$scope.Languagedata = new kendo.data.DataSource({
+
+		transport: {
+			read: {
+				type: "GET",
+				url: "/Admin/GetAllLanguages",
+				dataType: "json",
+				contentType: "application/json; charset=utf-8"
+
+			}
+		},
+		error: function (e) {
+			console.log(e.status); // displays "error"
+		}
+
+	});
+
+    //var dataset = [{
+    //    "Name": "html",
+    //    "Path": "admin/htmlpages",
+    //    "HTMLContent": "text"
+    //}, {
+    //    "Name": "test123",
+    //    "Path": "admin/htmlpages",
+    //    "HTMLContent": "Paragraph"
+    //}];
+
+    function refreshHtmlPagesGridData() {
+        //debugger;
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+			url: "/Admin/GetAllHtmlPages",
+			data: { languageId: $scope.HtmlObj.LanguageId },
+            success: function (data) {
+                //debugger;
+                HtmlPagesGrid.clear();
+                HtmlPagesGrid.rows.add(data).draw();
+            },
+            error: function (jqXHR, exception) {
+
+               // debugger;
+            }
+        });
+    }
+
+    var HtmlPagesGrid = $('#HtmlPagesTable').DataTable({
+        "data": [],
+        "paging": false,
+        "bSort": false,
+        "bInfo": false, // hide Showing 1 of N entries
+        "columnDefs": [
+            {
+                "targets": 3,
+                "data": null,
+                "width": "50px",
+                "defaultContent":
+                    "<button  class='btn btn-sm edit'><i class='glyphicon glyphicon-edit'></i></button>"
+            },
+            {
+                "targets": 4,
+                "data": null,
+                "width": "50px",
+                "defaultContent":
+                    "<button  class='btn btn-sm delete'><i class='glyphicon glyphicon-trash'></i></button>"
+            }
+        ],
+        "columns":
+            [
+                { title: "Name", "data": "Name", "width": "248px" },
+                { title: "Path", "data": "Path", "width": "248px" },
+                { title: "Content", "data": "HTMLContent", "width": "248px" },
+                { title: " ", "width": "12px" },
+                { title: " ", "width": "12px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar HtmlPages">frtip'
+    });
+
+    HtmlPagesGrid.on('click', 'button.edit', function () {
+        //debugger;
+
+        var HtmlPagesGrid = $('#HtmlPagesTable').DataTable();
+        var data = HtmlPagesGrid.row($(this).parents('tr')).data();
+
+        //debugger;
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: "/Admin/GetHtmlPageById",
+            data: { Id: data.Id },
+            success: function (response) {
+                //debugger;
+                $scope.winHtmlPages.center().open();
+                $scope.$apply(function () {
+                    $scope.HtmlObj = response;
+                });
+            },
+            error: function (jqXHR, exception) {
+
+                //debugger;
+            }
+        });
+    });
+
+    refreshHtmlPagesGridData();
+
+    $scope.onAddHtmlPageClick = function (e) {
+        $scope.winHtmlPages.center().open();
+    }
+
+    $scope.SaveHtmlPageData = function (event) {
+        debugger;
+        event.preventDefault();
+        if ($scope.validator.validate()) {
+            var url = "/Admin/AddHtmlPages";
+            if ($scope.HtmlObj.Id > 0)
+                url = "/Admin/UpdateHtmlPages";
+
+            $.ajax({
+                dataType: "json",
+                type: 'POST',
+                url: url,
+                data: { htmlPages: $scope.HtmlObj },
+                success: function (response) {
+                    debugger;
+                    clearForm();
+                    window.location.replace('/Admin/HtmlPages');
+                },
+                error: function (jqXHR, exception) {
+                    debugger;
+                    alert("error");
+                }
+            });
+        }
+    }
+
+    $scope.onCancel = function () {
+        clearForm();
+        $scope.winHtmlPages.close();
+    }
+
+    function clearForm() {
+        $scope.HtmlObj = { Id: 0, Name: "", Path: "", HTMLContent: "" };
+    }
+});

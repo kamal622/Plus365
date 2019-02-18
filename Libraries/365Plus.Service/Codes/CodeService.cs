@@ -1,0 +1,78 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.Codes
+{
+    public class CodeService
+    {
+        private readonly IRepository<Data.Models.Code> _codeRepository;
+
+        public CodeService(IRepository<Data.Models.Code> codeRepository)
+        {
+            this._codeRepository = codeRepository;
+        }
+
+        public List<CodeModel> GetAll()
+        {
+            var data = from a in this._codeRepository.Table
+                       select new CodeModel
+                       {
+                           Id = a.Id,
+                           CodeValue = a.CodeValue,
+                           Type = a.Type,
+                           Points = a.Points,
+                           IsActive = a.IsActive,
+						   CreatedBy = a.CreatedBy,
+						   CreatedDate = a.CreatedDate,
+						   ModifiedBy = a.ModifiedBy,
+						   ModifiedDate = a.ModifiedDate
+					   };
+
+            return data.ToList();
+        }
+
+        public CodeModel GetCodeByID(double id)
+        {
+            var data = from a in this._codeRepository.Table
+                       where a.Id == id
+                       select new CodeModel
+                       {
+                           Id = a.Id,
+                           CodeValue = a.CodeValue,
+                           Type = a.Type,
+                           Points = a.Points,
+                           IsActive = a.IsActive,
+						   CreatedBy = a.CreatedBy,
+						   CreatedDate = a.CreatedDate,
+						   ModifiedBy = a.ModifiedBy,
+						   ModifiedDate = a.ModifiedDate
+					   };
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.Code AddCode(Data.Models.Code code)
+        {
+            this._codeRepository.Insert(code);
+            return code;
+        }
+
+        public void UpdateCode(Data.Models.Code code)
+        {
+            var existingCode = _codeRepository.Table.FirstOrDefault(f => f.Id == code.Id);
+
+            existingCode.CodeValue = code.CodeValue;
+            existingCode.Type = code.Type;
+            existingCode.Points = code.Points;
+			existingCode.IsActive = code.IsActive;
+			existingCode.ModifiedBy = code.ModifiedBy;
+			existingCode.ModifiedDate = DateTime.UtcNow;
+
+			_codeRepository.Update(existingCode);
+		}
+    }
+}

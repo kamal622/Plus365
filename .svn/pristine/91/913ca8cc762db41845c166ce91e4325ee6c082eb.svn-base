@@ -1,0 +1,116 @@
+﻿@{
+	ViewBag.Title = "EmailTemplate";
+}
+
+
+<div class="body-container" ng-controller="EmailTemplateController" id="Emailtemplate">
+
+	<div class="header-div">
+		<select name="LanguageId" kendo-drop-down-list k-ng-model="EmailObj.LanguageId"
+				k-data-text-field="'Name'"
+				k-value-primitive="true"
+				k-on-change="OnChangeLanguage(kendoEvent)"
+				k-data-value-field="'Id'"
+				required validationMessage="*"
+				k-option-label="'Select Language'"
+				k-data-source="Languagedata"></select>
+		@*<kendo-button class="k-primary" ng-show="EmailObj.LanguageId > 0" ng-click="onAddEmailtemplateClick()">Add Email</kendo-button>*@
+	</div>
+	<div class="table-div" ng-show="EmailObj.LanguageId">
+		<table id="emailtemplateTable" class="ui celled table" cellspacing="0" width="100%"></table>
+	</div>
+
+	@*<div class="row">
+			<div class="col-md-8">
+				<kendo-button class="k-primary" ng-click="onAddEmailtemplateClick()">Add Email</kendo-button>
+
+				<select name="LanguageId" kendo-drop-down-list k-ng-model="EmailObj.LanguageId"
+						k-data-text-field="'Name'"
+						k-value-primitive="true"
+						k-on-change="OnChangeLanguage(kendoEvent)"
+						k-data-value-field="'Id'"
+						required validationMessage="*"
+						k-option-label="'Select Language'"
+						k-data-source="Languagedata"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table id="emailtemplateTable" class="ui celled table" cellspacing="0" width="100%"></table>
+			</div>
+		</div>*@
+
+	<div kendo-window="winEmail" k-title="'Add Email'" k-width="1000" k-visible="false" k-resizable="false" k-modal="true">
+		<div class="col-md-11">
+			<form kendo-validator="validator" class="form-horizontal" autocomplete="off">
+				<div class="row form-group">
+					<div class="col-md-5">
+						<label for="TemplateTypeId">Template Type: </label>
+					@*</div>
+                    <div class="col-md-3">*@
+                        @*<select name="TemplateTypeId" kendo-drop-down-list k-ng-model="EmailObj.TemplateTypeId"
+                                k-data-text-field="'Type'"
+                                k-value-primitive="true"
+                                k-data-value-field="'Id'"
+                                style="width:100%;"
+                                required validationMessage="Select Template type"
+                                k-option-label="'Template Type'"
+                                k-data-source="TemplateType" disabled></select>*@
+                        <span>{{EmailObj.TemplateTypeName}}</span>
+                        <span class="k-invalid-msg" data-for="TemplateTypeId"></span>
+                    </div>
+                    
+					<div class="col-md-5">
+						<label for="LanguageId">Language: </label>
+					@*</div>
+                    <div class="col-md-3">*@
+                        <span>{{EmailObj.LanguageName}}</span>
+                    </div>
+				</div>
+				<div class="row form-group">
+						<div class="col-md-12">
+							<label for="EmailSubject">Email Subject</label>
+						@*</div>
+						<div class="col-md-8">*@
+
+							<input name="EmailSubject" class="k-textbox" ng-model="EmailObj.Subject" style="width:100%;" required validationMessage="Enter Email Subject" placeholder="Email Subject" />
+							<span class="k-invalid-msg" data-for="Subject"></span>
+						</div>
+					</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<label for="Emailtext">Email Text</label>
+						@*</div>
+							<div class="col-md-6">*@
+						<textarea name="editor1" id="editor1" rows="10" cols="80">
+							 This is my textarea to be replaced with CKEditor.
+						</textarea>
+
+						@*<textarea name="Emailtext" ng-model="EmailObj.Body" placeholder="Email" class="k-textbox" required validationMessage="Enter Email" style="width:100%;"></textarea>
+							<span class="k-invalid-msg" data-for="Body"></span>*@
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-8">
+						<kendo-button type="submit" class="k-primary" ng-click="SaveTemplateData($event)">Save</kendo-button>
+						<kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+
+@section scripts {
+	<script type="text/javascript" src="~/js/EmailTemplateController.js"></script>
+
+	<script src="~/Scripts/ckeditor/ckeditor.js" type="text/javascript"></script>
+	<script src="~/Scripts/ckeditor/config.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+	</script>
+
+}

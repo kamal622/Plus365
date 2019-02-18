@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html ng-app="SiteApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/datatable")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-controller="BaseController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        @*<div class="container">*@
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("365Plus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (User.IsInRole("CEO"))
+                    {
+                        <li class="@(ViewBag.Title == "Language" ? "active" : "") "> @Html.ActionLink("Language", "Language", "Admin") </li>
+                        <li class="@(ViewBag.Title == "Country" ? "active" : "") "> @Html.ActionLink("Country", "Country", "Admin") </li>
+                        @*<li class="@(ViewBag.Title == "Assistant" ? "active" : "") "> @Html.ActionLink("Assistant", "Assistant", "Admin") </li>*@
+                        @*<li class="@(ViewBag.Title == "HtmlPages" ? "active" : "") "> @Html.ActionLink("Html Pages", "HtmlPages", "Admin") </li>*@
+                        <li class="@(ViewBag.Title == "Clients" ? "active" : "") "> @Html.ActionLink("Clients", "Clients", "Admin") </li>
+                        <li class="@(ViewBag.Title == "EmailTemplate" ? "active" : "") "> @Html.ActionLink("Email Template", "EmailTemplate", "Admin") </li>
+
+                    }
+                    @if (User.IsInRole("Client") || User.IsInRole("Prospect"))
+                    {
+                        <li class="@(ViewBag.Title == "Subscription" ? "active" : "") "> @Html.ActionLink("Subscription", "Subscription", "Admin") </li>
+                        <li class="@(ViewBag.Title == "Promote" ? "active" : "") "> @Html.ActionLink("Promote and Earn", "Promote", "Admin") </li>
+                    }
+                    @if (User.IsInRole("CEO") || User.IsInRole("Client"))
+                    {
+                        <li class="@(ViewBag.Title == "Lessons" ? "active" : "") "> @Html.ActionLink("Lessons", "Lessons", "Subscription") </li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        @*</div>*@
+    </div>
+    @*<div class="container body-content">*@
+    <div class="body-content">
+        @RenderBody()
+
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - 365Plus</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/datatable")
+    <script type="text/javascript" src="~/js/BaseController.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@{
+	ViewBag.Title = "Codes";
+}
+
+<div class="body-container" ng-controller="CodesController" id="Codes">
+	<div class="header-div">
+		<kendo-button class="k-primary" ng-click="onAddCodesClick()">Add Codes</kendo-button>
+	</div>
+	<div class="table-div">
+		<table id="Codestable" class="ui celled table" cellspacing="0" width="100%"></table>
+	</div>
+
+	<div kendo-window="winCodes" k-title="'Add Codes'" id="addCodes" k-width="440" k-visible="false" k-resizable="false" k-modal="true">
+		<form kendo-validator="validator" autocomplete="off">
+
+			
+				<div class="row form-group" ng-if="CodesObj.Type == 'Promotion'">
+					<div class="col-md-4">
+						<label for="Code">Code</label>
+					</div>
+					<div class="col-md-5">
+						<input name="Code" ng-model="CodesObj.CodeValue" placeholder="Code" class="k-textbox" style="width:100%;" required validationMessage="Enter Code" />
+						<span class="k-invalid-msg" data-for="Code"></span>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-4">
+						<label for="Type">Type</label>
+					</div>
+					<div class="col-md-5">
+						<select name="Type" kendo-drop-down-list k-ng-model="CodesObj.Type"
+								k-data-text-field="'Name'"
+								k-value-primitive="true"
+								k-ng-disabled ="true"
+								style="width:100%;"
+								k-data-value-field="'Id'"
+								required validationMessage="Select Type"
+								placeholder="'Select Type...'"
+								k-data-source="Codedata"></select>
+
+						<span class="k-invalid-msg" data-for="Type"></span>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-4">
+						<label for="Points">Points</label>
+					</div>
+					<div class="col-md-5">
+						<input name="Name" ng-model="CodesObj.Points" placeholder="Points" class="k-textbox" type="number" title="custom" value="2" step="1" style="width:100%;" required validationMessage="Enter Points" />
+						<span class="k-invalid-msg" data-for="Points"></span>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-4">
+						<label for="IsActive">IsActive</label>
+					</div>
+					<div class="col-md-5">
+						<div class="checkbox">
+							<label><input type="checkbox" value="" ng-model="CodesObj.IsActive">Active</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-5">
+						<kendo-button type="submit" class="k-primary" ng-click="saveCodesData($event)">Save</kendo-button>
+						<kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+					</div>
+				</div>
+			
+		</form>
+	</div>
+
+</div>
+
+@section scripts {
+	<script type="text/javascript" src="~/js/CodesController.js"></script>
+}
+

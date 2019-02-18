@@ -1,0 +1,54 @@
+﻿using _365Plus.Core.Data;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _365Plus.Service.HtmlPages
+{
+    public class HtmlPageService
+    {
+        private readonly IRepository<Data.Models.HTMLPage> _htmlPageRepository;
+        private readonly IRepository<Data.Models.HTMLPageContent> _htmlPageContentRepository;
+        public HtmlPageService(IRepository<Data.Models.HTMLPage> htmlPageRepository, IRepository<Data.Models.HTMLPageContent> htmlPageContentRepository)
+        {
+            this._htmlPageRepository = htmlPageRepository;
+            this._htmlPageContentRepository = htmlPageContentRepository;
+        }
+
+        public List<HtmlPagesModel> GetAll()
+        {
+            var data = from a in this._htmlPageRepository.Table
+                       select new HtmlPagesModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           Path = a.Path
+                       };
+
+            return data.ToList();
+        }
+
+        public HtmlPagesModel GetHtmlPageById(double id)
+        {
+            var data = from a in this._htmlPageRepository.Table
+                       where a.Id == id
+                       select new HtmlPagesModel
+                       {
+                           Id = a.Id,
+                           Name = a.Name,
+                           Path = a.Path
+                       };
+            return data.FirstOrDefault();
+        }
+
+        public Data.Models.HTMLPage AddHtmlPages(Data.Models.HTMLPage htmlPages)
+        {
+            htmlPages.Id = 1 ; // TODO :change
+            this._htmlPageRepository.Insert(htmlPages);
+            return htmlPages;
+        }
+    }
+}

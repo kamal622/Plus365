@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Language";
+}
+
+
+
+<div class="body-container" ng-controller="LanguageController" id="language">
+
+    <div class="header-div">
+        <kendo-button class="k-primary" ng-click="onAddLanguageClick()">Add language</kendo-button>
+    </div>
+    <div class="table-div">
+        <table id="Languagetable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <kendo-button class="k-primary" ng-click="onAddLanguageClick()">Add language</kendo-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="Languagetable" class="ui celled table" cellspacing="0" width="100%"></table>
+        </div>
+    </div>*@
+
+    <div kendo-window="winLanguage" k-title="'Add Language'" k-width="550" k-visible="false" k-resizable="false" k-modal="true">
+        <form kendo-validator="validator" autocomplete="off">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <label for="LanguageName">Name</label>
+                </div>
+                <div class="col-md-7">
+                    <input name="LanguageName" ng-model="Languageobj.Name" placeholder="Language Name" class="k-textbox" style="width:100%" pattern=".{3,125}" required validationMessage="Enter Language Name" />
+                    <span class="k-invalid-msg" data-for="LanguageName"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <label for="LanguageCulture">Culture</label>
+                </div>
+                <div class="col-md-7">
+                    <input name="LanguageCulture" class="k-textbox" ng-model="Languageobj.Culture" required validationMessage="Enter Language Culture" style="width:100%" placeholder="Language Culture" />
+
+                    <span class="k-invalid-msg" data-for="LanguageCulture"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <kendo-button class="k-primary" type="submit" ng-click="saveLanguageData($event)">Save</kendo-button>
+                    <kendo-button type="button" ng-click="onCancel()">Cancel</kendo-button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/js/LanguageController.js"></script>
+}
+

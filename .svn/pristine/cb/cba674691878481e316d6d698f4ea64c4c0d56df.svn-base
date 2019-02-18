@@ -1,0 +1,146 @@
+﻿using _365Plus.Service.User;
+using _365Plus.Web.Framework.Controllers;
+using _365Plus.Service.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using _365Plus.Web.Models;
+using _365Plus.Service.Assistant;
+using _365Plus.Service.Clients;
+
+namespace _365Plus.Web.Controllers
+{
+    public class HomeController : BaseController
+    {
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        private readonly UserService _userService;
+        private readonly ClientService _clientService;
+
+        public HomeController(UserService userService, ClientService clientService)
+        {
+            this._userService = userService;
+            this._clientService = clientService;
+        }
+
+        [Authorize]
+        public ActionResult Index()
+        {
+            //var a = this._userService.GetAll();
+            return View();
+        }
+
+		public ActionResult Info()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            //ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public JsonResult RegisterClient(ClientsModel client)
+        {
+            var result = new { Success = "true", Message = "Success" };
+            var roleManager = new RoleManager<Role, int>(new RoleStore<Role, int, UserRole>(new ApplicationDbContext()));
+
+
+            if (UserManager.FindByName(client.PersonalEmail) == null)
+            {
+                var user = new User
+                {
+                    UserName = client.PersonalEmail,
+                    Email = client.PersonalEmail,
+                    EmailConfirmed = true,
+                    UserProfile = new UserProfile { FirstName = client.FirstName, LastName = client.LastName, IsActive = true, IsBlocked = false, IsVersionUpdated = true }
+                };
+                var res = UserManager.Create(user, client.Password);
+                if (res.Succeeded)
+                {
+                    UserManager.AddToRole(user.Id, "Prospect");
+                    client.ModifiedBy = Convert.ToInt32(User.Identity.GetUserId());
+
+                    client.Id = user.UserProfile.Id;
+
+                    this._clientService.UpdateClient(client);
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                   
+                }
+
+            }
+
+            return Json(result, JsonRequestBehavior.DenyGet);
+
+        }
+
+        public ActionResult Invite()
+        {
+            //ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+		public ActionResult PaymentInstruction()
+        {
+            //ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+    }
+}

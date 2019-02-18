@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Subscription";
+}
+
+<div class="body-container" ng-controller="SubscriptionController" id="Subscription" layout="column" ng-cloak="">
+
+    <div class="header-div">
+        <span>Username<label>:{{FirstName}}</label></span><br />
+        <span>Your Noknok Points are:<label>{{Points}}</label></span>
+    </div>
+
+    <div class="table-div">
+        <table id="subscriptionTable" class="ui celled table" cellspacing="0" width="100%"></table>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/js/SubscriptionController.js"></script>
+}

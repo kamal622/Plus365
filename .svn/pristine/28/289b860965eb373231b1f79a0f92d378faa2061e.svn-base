@@ -1,0 +1,55 @@
+﻿SiteApp.controller("FriendsController", function ($scope, $http) {
+   
+    var dataset = [
+        {
+        "FirstName": "test",
+        "LastName": "123",
+        "Email": "test@gmail.com",
+        "Country": "India"
+    }, {
+            "FirstName": "test",
+            "LastName": "123",
+            "Email": "test@gmail.com",
+            "Country": "India"
+    }];
+    var friendsgrid = $('#friendstable').DataTable({
+        "data": dataset,
+        "paging": false,
+        "bSort": false,
+        "bInfo": false, 
+        "columnDefs": [
+            {
+                "targets": 4,
+                "data": null,
+                "width": "70px",
+                "defaultContent":
+                    "<button  class='btn btn-sm edit'><i class='glyphicon glyphicon-pencil'></i></button>"
+            },
+            {
+                "targets": 5,
+                "data": null,
+                "width": "70px",
+                "defaultContent":
+                    "<button  class='btn btn-sm delete'><i class='glyphicon glyphicon-trash'></i></button>"
+            }
+        ],
+        "columns":
+            [
+                { title: "First Name", "data": "FirstName", "width": "195px" },
+                { title: "Last Name", "data": "LastName", "width": "195px" },
+                { title: "Email", "data": "Email", "width": "225px" },
+                { title: "Country", "data": "Country", "width": "195px" },
+                { title: " ", "width": "30px" },
+                { title: " ", "width": "30px" }
+            ],
+        "sorting": false,
+        "dom": '<"toolbar friends">frtip'
+    });
+
+
+    friendsgrid.on('click', 'button.edit', function () {
+        alert('friendsgrid');
+
+    });
+
+});
